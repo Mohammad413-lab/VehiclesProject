@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/swiper-bundle.min.css" />
+
+</head>
+
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center;overflow-x: hidden;">
+    <div id="Success"></div>
+    <div id="Message"></div>
+    <div id="Loading"></div>
+    <div id="NavBar"></div>
+    <div id="NoCarsFound"></div>
+    <div class="ViewCarContainer" style="margin-top: 50px;">
+
+        <div style="width:60%;height: 100%; display: flex; flex-direction: column; align-items: center; padding: 5px;">
+            <div class="swiper-container" style="height: 100%; width: 
+              60%;">
+                <div id="Wrapper" class="swiper-wrapper">
+
+
+
+
+
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+
+            </div>
+            <div style="width: 100%; display: flex; align-items: center; justify-content: center;  margin-top: 10px;">
+
+                <p id="DescriptionValue" style="color: rgb(199, 194, 194);  
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                ">-</p>
+            </div>
+        </div>
+
+
+
+
+
+        <div>
+
+            <div class="DivRow">
+                <p class="CarInfoDesign">Owner <i class="fa-solid fa-user MainColor "></i></p>
+                <p id="OwnerValue" class="CarInfoDesignValue ">-</p>
+            </div>
+
+            <div class="DivRow">
+                <p class="CarInfoDesign">Owner phone <i class="fa-solid fa-square-phone-flip MainColor"></i></i></p>
+                <p id="UserPhoneValue" class="CarInfoDesignValue ">-</p>
+            </div>
+
+            <div class="DivRow">
+                <p class="CarInfoDesign">Email <i class="fa-solid fa-square-envelope MainColor"></i></p>
+                <p id="EmailValue" class="CarInfoDesignValue ">-</p>
+            </div>
+
+            <div class="DivRow">
+                <p class="CarInfoDesign">Address <i class="fa-solid fa-location-dot MainColor"></i></p>
+                <p id="AddressValue" class="CarInfoDesignValue">-</p>
+            </div>
+
+            <div class="DivRow">
+                <p class="CarInfoDesign">Country <i class="fa-solid fa-flag MainColor"></i></p>
+                <p id="CountryValue" class="CarInfoDesignValue">-</p>
+            </div>
+
+            <div class="Line"></div>
+
+
+            <div class="DivRow">
+                <p class="CarInfoDesign">Price <i class="fa-solid fa-tag MainColor"></i></p>
+                <p id="PriceValue" class="CarInfoDesignValue">-</p>
+            </div>
+
+            <div class="DivRow">
+                <p id="RentalPriceWord" class="CarInfoDesign">Rental price <i class="fa-solid fa-tag MainColor"></i>
+                </p>
+                <p id="RentalPriceValue" class="CarInfoDesignValue">-</p>
+            </div>
+
+            <div class="DivRow">
+                <p class="CarInfoDesign">Make <i class="fa-solid fa-check-to-slot MainColor"></i></p>
+                <p id="MakeValue" class="CarInfoDesignValue">-</p>
+            </div>
+
+            <div class="DivRow">
+                <p class="CarInfoDesign">Model <i class="fa-solid fa-check-to-slot MainColor"></i></p>
+                <p id="ModelValue" class="CarInfoDesignValue">-</p>
+            </div>
+
+            <div class="DivRow">
+                <p class="CarInfoDesign">Year <i class="fa-solid fa-check-to-slot MainColor"></i></p>
+                <p id="YearValue" class="CarInfoDesignValue">-</p>
+            </div>
+            <div class="DivRow">
+                <p class="CarInfoDesign">Color <i class="fa-solid fa-check-to-slot MainColor"></i></p>
+                <p id="ColorValue" class="CarInfoDesignValue">-</p>
+            </div>
+
+
+            <div class="Line"></div>
+
+            <div style="display:flex;">
+
+                <button id="CarOrderButton" class="HomeButtonOrder"
+                    style="background: whitesmoke; margin-right: 10px;">request <i class="fa-solid fa-hand"></i>
+                </button>
+                <button id="ChatButton" class="HomeButtonChat" style="background: whitesmoke;">chat <i
+                        class="fa-solid fa-comment"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; width: 100%; justify-content: left; padding-left: 50px;">
+        <p id="OwnerCar" class="CarInfoDesign" style="display: none; font-size: 25px; color: gray; opacity: 0.3; "> Owner Cars</p>
+    </div>
+
+
+    <div class="ShowCarContainer">
+        <ul id="CarUl" class="CarUl">
+
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+</body>
+<script src="../../pageshelper/sendmessage.js" type="module"></script>
+<script src="../../pageshelper/loading.js" type="module"></script>
+<script src="../../pageshelper/swiper-bundle.min.js"></script>
+<script src="../../pageshelper/carul.js" type="module"></script>
+<script src="../../pageshelper/navbar.js" type="module"></script>
+<script src="../../js/mainpagesjs/viewcar.js" type="module"></script>
+
+
+
+</html>

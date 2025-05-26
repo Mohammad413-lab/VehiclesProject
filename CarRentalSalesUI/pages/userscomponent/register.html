@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Sign up</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../css/register.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/components.css">
+
+</head>
+
+<body
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; min-width: 100vw; min-height:100vh;">
+    <div class="BigContainer Row">
+        <div class="DivLogo" style="flex-direction: column;">
+            <div style="width: 100%; margin-top: 50px; padding-left: 30%;">
+                <a href="../../index.html" class="Paragraph"
+                    style="color: white; font-weight: bold; text-decoration: none;">
+                    <i class="fa-solid fa-arrow-left" style="font-size: 30px;"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <div id="signupForm" class="LogInContainer">
+            <img src="../../assets/images/jocar.png" class="SmallLogo">
+
+            <p class="LogInP">Sign up</p>
+
+
+
+            <p style="color: #dddddd; font-weight: bold;  font-size: 100%;">please enter your information to create an
+                account</p>
+
+
+
+            <input type="text" name="firstName" placeholder="First name..." />
+
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningFirstName"> please enter your first name</p>
+            </div>
+            <input type="text" name="lastName" placeholder="Last name..." />
+
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningLasttName"> please enter your last name</p>
+            </div>
+
+            <input type="email" name="email" placeholder="Email..." />
+
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningEmail"> please enter your email</p>
+            </div>
+
+            <input type="phone" name="phone" placeholder="Phone..." />
+
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningPhone"> please enter your phone</p>
+            </div>
+
+            <input type="text" name="address" placeholder="Address..." />
+
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningAddress"> please enter your address</p>
+            </div>
+
+
+            <input type="password" name="password" placeholder="Password..." />
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningPassword"> please enter your password</p>
+            </div>
+
+            <input type="password" name="confirmpassword" placeholder="Confirm password..." />
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningConfirmPassword"> please confirm your password</p>
+            </div>
+            <select id="CountrySelect">
+                <option value="" disabled selected>Country</option>
+            </select>
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningSelected"> please select your country</p>
+            </div>
+            <button id="RegisterButton" class="ButtonSize">Sign up</button>
+            <a href="../../index.html" class="Paragraph"
+                style="color: #007bff; font-weight: bold; text-decoration: none; margin-top: 7px;">
+                Back to login
+            </a>
+
+
+
+
+
+        </div>
+    </div>
+
+
+</body>
+<script src="../../js/usercomponent/register.js" type="module"></script>
+<script src="../../components/alert.js" type="module"></script>
+
+</html>

@@ -1,0 +1,71 @@
+
+@import url("main.css");
+.LogInContainer{
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+
+.BigContainer{
+    width: 50%;
+    height: 80vh;
+    padding: 2px;
+    background:white;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+  
+}
+.LogInP{
+    color: var(--main-color);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.BigWelcome{
+    font-size: 15px;
+    color: var(--secondary-color);
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.BtnSize{
+    width: 80px;
+    height: 40px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.Paragraph{
+    font-weight: bold;
+    font-size: 100%;
+    color: var(--main-color);
+}
+
+.DivLogo{
+    background: var(--main-color);
+    border-bottom-left-radius:300px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+.DivEmailAndPassword{
+    width: 100%;
+     display: flex;
+      justify-content:
+       flex-start; padding-left: 40%;
+}

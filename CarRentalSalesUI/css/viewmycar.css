@@ -1,0 +1,8 @@
+.ViewMyCarHint{
+  font-size: 50%;
+  color: var(--hints-color-gray);
+  font-weight: bold;
+  margin-right: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

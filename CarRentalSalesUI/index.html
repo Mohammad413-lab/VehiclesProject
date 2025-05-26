@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/all.min.css">
+
+</head>
+
+<body
+    style="display: flex; flex-direction: row; justify-content: center; align-items: center; overflow: hidden; min-width: 100vw; min-height:100vh;">
+    <div class="BigContainer Row">
+        <div class="DivLogo" style="flex-direction: column;">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <form id="loginForm" class="LogInContainer">
+            <img src="assets/images/jocar.png" class="SmallLogo">
+            <p class="LogInP">Log in</p>
+            <p style="color:#00000026	; font-weight: bold;  font-size: 100%;">enter your email and
+                password to login in
+                your account...</p>
+            <input type="email" name="email" placeholder="Email..." />
+
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningEmail"> please enter your email</p>
+            </div>
+
+
+
+            <input type="password" name="password" placeholder="Password..." />
+            <div class="DivEmailAndPassword">
+                <p class="WarningParaghraph" id="WarningPassword"> please enter your password</p>
+            </div>
+            <div style="display: flex; gap: 70px; margin-top: 10px;">
+                <a href="pages/userscomponent/forgottenpassword.html" class="Paragraph"
+                    style="text-decoration: none; margin-top: 7px;">
+                    forgotten password ...
+                </a>
+                <button type="submit" class="BtnSize">login</button>
+            </div>
+            <p class="WarningParaghraph" id="BadRequest"> invalid </p>
+            <div
+                style="height: 100px; width: 100%; align-items: center; justify-content: center; display: flex;  gap: 10px;">
+                <p style="color: #00000026	; font-weight: bold; ">If you don’t have an account</p>
+                <p>
+                    <a href="pages/userscomponent/register.html"
+                        style="color: #007bff; font-weight: bold;text-decoration: none; font-size: 13px;">
+                        create an account...
+                    </a>
+                </p>
+            </div>
+            <div
+                style="height: 100px; width: 100%; align-items: center; justify-content: center; display: flex;  gap: 10px; ">
+                <p style="color: #00000026	; font-weight: bold;">to verfied your email</p>
+                <p>
+                    <a href="pages/userscomponent/verfied.html"
+                        style="color: #007bff; font-weight: bold;  text-decoration: none; font-size: 13px">
+                        verfied...
+                    </a>
+                </p>
+            </div>
+
+
+        </form>
+    </div>
+
+
+</body>
+<script src="./apiservices/ApiServices.js" type="module"></script>
+<script src="./models/user.js" type="module"></script>
+<script type="module">
+    import { ApiServices } from './apiservices/ApiServices.js';
+    import { User } from "./models/user.js";
+
+
+    function checkLogInInput(input, warning) {
+        if (input == "") {
+            warning.style.display = "flex";
+            return false;
+        } else {
+            warning.style.display = "none";
+            return true
+        }
+
+    }
+
+    let warningPassword = document.getElementById("WarningPassword");
+    let warningEmail = document.getElementById("WarningEmail");
+    let badRequest = document.getElementById("BadRequest");
+
+    const loginForm = document.getElementById("loginForm");
+    badRequest.style.display = "none";
+    loginForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+
+
+
+
+        const formData = new FormData(loginForm);
+        let email = formData.get("email");
+        let password = formData.get("password");
+        let isPasswordNotEmpty = checkLogInInput(password, warningPassword);
+        let isEmailNotEmpty = checkLogInInput(email, warningEmail)
+        if (isPasswordNotEmpty && isEmailNotEmpty) {
+            let response = await ApiServices.logIn(password, email);
+
+
+
+
+
+            if (response.Status == 200) {
+
+                let userResponse = await ApiServices.getUserByEmail(email);
+                let user = new User(userResponse.userID,
+                    userResponse.firstName,
+                    userResponse.lastName,
+                    userResponse.email,
+                    userResponse.phoneNumber,
+                    userResponse.countryName,
+                    userResponse.countryId,
+                    userResponse.adress);
+                sessionStorage.setItem("token", response.Data.token);
+                sessionStorage.setItem("user", JSON.stringify(user));
+                location.replace("pages/mainpages/home.html");
+            } else {
+                badRequest.style.display = "flex";
+                console.log(response);
+                badRequest.textContent = response.Data.message;
+
+            }
+
+        }
+
+
+
+
+    });
+</script>
+
+</html>

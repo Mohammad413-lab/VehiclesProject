@@ -1,0 +1,375 @@
+
+  @import url(main.css);
+  .container {
+    padding:0;
+    background-color: white; 
+    width:100%;
+    height: 100%;
+    border-radius: 20px;
+  }
+  
+  /* ===== MENU ===== */
+
+  
+
+
+  
+  .discussions {
+    width: 20%;
+    height: 100%;
+    overflow: hidden;
+    display: inline-block;
+
+  }
+  
+  .discussions .discussion {
+    width: 100%;
+    height: 90px;
+    background-color: #FAFAFA;
+    border-bottom: solid 1px var(--hints-color);
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+    padding-left: 5px;
+    cursor: pointer;
+  }
+  
+  .discussions .search {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: #E0E0E0;
+  }
+  
+  .discussions .search .searchbar {
+    height: 40px;
+    background-color: #FFF;
+    width: 70%;
+    padding: 0 20px;
+    border-radius: 50px;
+    border: 1px solid var(--hints-color);
+    display:flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .discussions .search .searchbar input {
+    margin-left: 15px;
+    height:38px;
+    width:100%;
+    border:none;
+    font-family: 'Montserrat', sans-serif;;
+  }
+  
+  .discussions .search .searchbar *::-webkit-input-placeholder {
+      color: #E0E0E0;
+  }
+  .discussions .search .searchbar input *:-moz-placeholder {
+      color: #E0E0E0;
+  }
+  .discussions .search .searchbar input *::-moz-placeholder {
+      color: #E0E0E0;
+  }
+  .discussions .search .searchbar input *:-ms-input-placeholder {
+      color: #E0E0E0;
+  }
+  
+ .MessagesLeftSide {
+    
+    display: flex;
+    width: 98.5%;
+    margin-bottom: 2px;
+    border-bottom: 1px solid var(--hints-color);
+  }
+
+  .MessagesLeftSide:hover{
+    background-color: #f5f5f5;
+    
+  }
+
+
+
+  
+
+  
+  .online {
+    position: relative;
+    top: 30px;
+    left: 35px;
+    width: 13px;
+    height: 13px;
+    background-color: #8BC34A;
+    border-radius: 13px;
+    border: 3px solid #FAFAFA;
+  }
+  
+  .desc-contact {
+    height: 43px;
+    width:50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .discussions .discussion .name {
+
+    font-family:'Montserrat', sans-serif;
+    font-size: 11pt;
+    color:#515151;
+  }
+  
+  .discussions .discussion .message {
+
+    font-family:'Montserrat', sans-serif;
+    font-size: 9pt;
+    color:#515151;
+  }
+  
+  .timer {
+    margin-left: 15%;
+    font-family:'Open Sans', sans-serif;
+    font-size: 11px;
+    padding: 3px 8px;
+    color: #BBB;
+    background-color: #FFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 15px;
+  }
+  
+  .chat {
+    width: 80% ;
+    position: relative;
+    border-left:1px solid var(--hints-color) ;
+    
+  }
+  
+  .header-chat {
+    height: 90px;
+    display:flex;
+    align-items: center;
+    border-bottom:1px solid var(--hints-color);
+  }
+  
+  .chat .header-chat .icon {
+    margin-left: 30px;
+    color:#515151;
+    font-size: 14pt;
+  }
+  
+  .chat .header-chat .name {
+
+    text-transform: uppercase;
+    font-family:'Montserrat', sans-serif;
+    font-size: 13pt;
+    color:#515151;
+  }
+  
+  .chat .header-chat .right {
+    position: absolute;
+    right: 40px;
+  }
+  
+  .chat .messages-chat {
+    padding: 10px;
+  }
+  
+  .chat .messages-chat {
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    border-radius: 5px;
+
+  }
+  
+
+  
+  .chat .messages-chat .text {
+  
+    background-color: #f6f6f6;
+
+    border-radius: 12px;
+  }
+  
+  .text-only {
+    margin-left: 45px;
+  }
+  
+  .time {
+    font-size: 10px;
+    color:lightgrey;
+  }
+  
+
+  
+
+  
+
+  .footer-chat {
+    width: 100%;
+    height: 80px;
+    display:flex;
+    align-items: center;
+    position:absolute;
+    bottom: 0;
+    background-color: transparent;
+    border-top: 2px solid #EEE;
+    
+  }
+  
+  .chat .footer-chat .icon {
+    margin-left: 30px;
+    color:#C0C0C0;
+    font-size: 14pt;
+  }
+  
+  .chat .footer-chat .send {
+    color:#fff;
+    background-color: #4f6ebd;
+    position: absolute;
+    right: 50px;
+    padding: 12px 12px 12px 12px;
+    border-radius: 50px;
+    font-size: 14pt;
+  }
+  
+  .chat .footer-chat .name {
+
+    text-transform: uppercase;
+    font-family:'Montserrat', sans-serif;
+    font-size: 13pt;
+    color:#515151;
+  }
+  
+  .chat .footer-chat .right {
+    position: absolute;
+    right: 40px;
+  }
+  
+  .write-message {
+    border:none !important;
+    width:60%;
+    height: 50px;
+    margin-left: 20px;
+    padding: 10px;
+  }
+  
+  .footer-chat *::-webkit-input-placeholder {
+    color: #C0C0C0;
+    font-size: 13pt;
+  }
+  .footer-chat input *:-moz-placeholder {
+    color: #C0C0C0;
+    font-size: 13pt;
+  }
+  .footer-chat input *::-moz-placeholder {
+    color: #C0C0C0;
+    font-size: 13pt;
+    margin-left:5px;
+  }
+  .footer-chat input *:-ms-input-placeholder {
+    color: #C0C0C0;
+    font-size: 13pt;
+  }
+  
+  .clickable {
+    cursor: pointer;
+  }
+  .row{
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  .BorderBottom{
+
+    border-bottom: 1px solid var(--hints-color);
+  }
+  .Response{
+    color: var(--secondary-color);
+    font-size: 100%;
+    font-weight: bold;
+    opacity: 0.7;
+  }
+
+  .Emails{
+    font-size: 100%;
+    color: black;
+    font-weight: bold;
+  }
+
+
+
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+
+    padding: 5px;
+}
+
+
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 2000;
+    
+}
+
+
+.checkmark {
+    height: 20px;
+    width: 20px;
+    background-color: var(--body-background-color);
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+    position: relative;
+}
+
+
+.checkbox-container input[type="checkbox"]:checked + .checkmark {
+ background: var(--secondary-color);
+ opacity: 0.7;
+}
+
+
+
+
+.checkbox-container .checkmark::after {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    opacity: 1;
+}
+.ChatUl{
+    width: 100%;
+    height: 100%;
+    display: block;
+    list-style: none;
+    padding: 0px;
+    overflow-y: auto;
+
+}
+
+.IconButton{
+    background: white;
+    color: black;
+    opacity: 0.1;
+}
+
+.IconButton:hover{
+    background: var( --hints-color);
+    color:  black;
+    opacity: 1;
+ 
+}
+

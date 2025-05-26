@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat page</title>
+    <link rel="stylesheet" href="../../css/chat.css" />
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/home.css">
+</head>
+
+<body class="BodyColor"
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100vw; height: 100vh; overflow: hidden; ">
+    <div class="StickyNavBarGreen" style="justify-content: start; height: 2px; top: 0;">
+        <p style="color: white; font-weight: bold; font-size: 15px;  position: absolute; top: 0; ">Chat</p>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            <section class="discussions">
+                <div class="discussion search">
+                    <div class="searchbar">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <input type="text" placeholder="Search..." style="background: transparent;"></input>
+                    </div>
+                </div>
+                <button id="TrashButton" class="IconButton"> <i class="fa-solid fa-trash-can"
+                        style="font-size: 20px;"></i> </button>
+
+                <div style="width: 100%; height: 80%;  justify-content: center; display:flex;">
+                    <ul id="EmailsUl" class="ChatUl">
+                        
+                    </ul>
+                </div>
+
+
+
+            </section>
+
+            <section class="chat">
+                <div class="header-chat" style="gap: 30px; padding-left: 20px;">
+                    <button id="BackButton" style=" border-radius: 10px;"><i class="fa-solid fa-arrow-left"></i></button>
+                    <p id="footerName" class="Response"></p>
+
+
+
+                </div>
+                <div style="height: 700px; ; overflow: hidden;;">
+                    <ul id="MessageUl" style="list-style: none; overflow-y: auto; height:95%; padding: 10px; ">
+
+                        <li>
+                            <div class="BorderBottom">
+                                <p class="Response">Welcome</p>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="footer-chat">
+
+                    <input id="InputSentMessage" type="text" class="write-message"
+                        placeholder="Type your message here"></input>
+                    <button id="ButtonSentMessage" style="border-radius: 10px;"><i
+                            class="fa-solid fa-paper-plane"></i></button>
+                </div>
+        </div>
+
+        </section>
+
+    </div>
+
+
+</body>
+<script src="../../js/mainpagesjs/chat.js" type="module"></script>
+<script src="../../pageshelper/messageul.js" type="module"></script>
+
+</html>

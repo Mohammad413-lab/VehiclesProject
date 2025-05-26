@@ -1,0 +1,1 @@
+greenHintColor="#a3bfb9";

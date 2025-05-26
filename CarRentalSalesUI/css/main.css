@@ -1,0 +1,881 @@
+:root {
+    --main-color: #2C2C2C;
+    --secondary-color: #FF6F00;
+    --body-background-color:#FFFBF7;
+    --hints-color:#f0f2f5 ;
+    --hints-color-gray:#dddddd;
+    --button-color:#FF6F00	;
+    --button-acrtive: #FF6F00;
+    --warning-p-colo:#cc0000;
+    --shadow-color:rgba(0, 0, 0, 0.06);
+    --background-gray-opac:#dddd;
+    --white-blue-color:#f0f4f8
+  
+
+  }
+  body{
+    background: var(--white-blue-color);
+  
+  }
+
+textarea{
+  border-bottom:1px solid var(--hints-color-gray);
+  border-right:1px solid var(--hints-color-gray);
+  border-top:0px;
+  border-left:0px;
+  width: 80%;
+  height: 80%;
+  border-radius: 4px;
+  outline: none;
+ 
+}
+.WarningParaghraph{
+  display: none;
+  font-weight: bold;
+  font-size:80%;
+  color: red;
+  opacity: 0; 
+  margin-left: 5px;
+  animation: fadeIn 0.5s forwards;
+}
+
+
+
+
+textarea:focus{
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.TextLogo{
+  font-size: 25px;
+  width: 100%;
+  font-weight: bold;
+  font-style: italic;
+  color: var(--main-color);
+  margin-right: 100px;
+
+}
+input {
+    width: 60%;
+    padding: 10px;
+    margin: 2px ;
+    border-radius: 4px;
+    border-bottom: 1px solid var(--hints-color-gray);
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    outline: none;
+    font-style:italic ;
+   
+}
+
+input::placeholder{
+    color:  gray;
+    font-weight: normal;
+}
+input:focus{
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+
+button {
+    padding: 10px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: black;
+}
+
+button:active {
+    background: var(--button-acrtive);
+    scale: 0.98;
+}
+
+
+.IconColor{
+    font-size: 28px;
+    color: var(--main-color);
+}
+  .Row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .RowWithoutCenter{
+    display: flex;
+  }
+  .hintcolor{
+    color: var(--hints-color);
+  }
+  .BigLogo{
+    width: 70%;
+    height: 70%;
+   
+  }
+
+  .SmallLogo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .PhintSamll{
+    color: var(--hints-color);
+     font-weight: bold; 
+     font-size: 100%;
+  }
+
+  .ParagraphBig{
+    color: var(--main-color);
+     font-weight: bold; 
+     font-size: 100%;
+  }
+
+  .hide{
+    display: none;
+    opacity: 0; 
+    animation: fadeIn 0.5s forwards;
+  }
+
+select{
+  width: 60%;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius:2px;
+  background: white;
+  font-weight: bold;
+
+}
+
+.StickyNavBar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  background:white;
+  border-radius: 2px;
+  padding: 5px;
+  transition: top 0.3s;
+  z-index: 1000;
+}
+.StickyNavBarGreen {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 28px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  border-radius: 2px;
+  background:var(--main-color);
+  padding: 15px 20px;
+  transition: top 0.3s;
+  margin-bottom: 50px;
+  z-index: 999;
+}
+
+a{
+  color:gray;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+.ULRow{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+
+}
+.ULRow li{
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+a:hover{
+  color: var(--main-color);
+  border-radius: 5PX;
+}
+
+.SearchInput{
+  width: 60%;
+  padding: 10px;
+  margin: 2px ;
+  border-radius: 20px;
+  border: 2px solid var(--main-color);
+  outline: none;
+  font-style:italic ;
+  background: white;
+}
+.SearchInput::placeholder{
+  color: gray;
+}
+
+.BarList{
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  box-shadow: 0px 20px 16px var(--shadow-color);
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+  width: 20%;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+.ANavBar{
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  font-weight: normal;
+  width: 100%;
+  font-size: 100%;
+  color: var(--hints-color-gray);
+}
+.ANavBar i{
+  color: black;
+}
+.ANavBar:hover i{
+  color: var(--secondary-color);
+}
+
+.LiContainer{
+  padding: 10px;
+  margin: 10px;
+  height: 435px;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 1px  rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.LiContainerHorizantal{
+  padding: 20px;
+  margin: 10px;
+  width: 400px;
+  height: 450px;
+  background: white;
+  box-shadow: 0px 20px 16px var(--shadow-color);
+  border-bottom: 0.3px solid var(--main-color);
+  border-radius: 10px;
+
+}
+
+.CarImage{
+  max-width:90%;
+  height: 30%;
+}
+.CarInfoDesign{
+  font-size: 80%;
+  color: var(--hints-color-gray);
+  font-weight: normal;
+  margin-right: 5px;
+  white-space: nowrap;
+
+}
+.CarInfoDesignValue{
+  font-size: 80%;
+  color: black;
+  font-weight: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0.6;
+}
+
+.DivRow{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.LoadingContainer {
+  position: fixed; 
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  z-index: 25000; 
+  display: flex;
+  color: var(--hints-color-gray);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.TextLoading{
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+
+.Dot {
+  animation: blink 1.5s infinite;
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  border-radius: 5px;
+  background: var(--main-color);
+}
+
+
+.Dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.Dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.Dot:nth-child(3) {
+  animation-delay: 1s;
+}
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+
+}
+
+
+.swiper-slide img {
+  width: 100%; 
+  height: 100%; 
+  border-radius: 5px;
+  object-fit: cover; 
+  object-position: center; 
+}
+.swiper-wrapper {
+  display: flex;
+}
+
+.PrevButton,
+.NextButton {
+  color: white;
+  background-color: black;
+  border-radius: 50%;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%; 
+  transform: translateY(-50%); 
+  z-index: 10;
+}
+
+.GreenColor{
+  color:green;
+}
+
+.PrevButton {
+  left: 10px; 
+}
+.PrevButton:active{
+  color: var(--main-color
+  );
+
+
+}
+
+
+.NextButton {
+  right: 10px; 
+}
+
+.PriceBackground{
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  height: 40px;
+  justify-content: start;
+  overflow: hidden;
+  width: 100%;
+  padding: 4px;
+  border: 1px solid var(--body-background-color)
+
+}
+
+.ViewCarContainer{
+  width: 100%;
+  background: white;
+  padding: 20px;
+  overflow: hidden;
+  display: flex;
+  border-bottom: 1px solid var(--hints-color-gray);
+  gap: 5PX;
+ 
+  
+}
+
+.Line{
+  width: 100%;
+  height: 0.5px;
+  background: #f0f2f5;
+}
+
+.SuccessfulLogo{
+  width: 300px;
+  height: 300px;
+  background: white;
+  box-shadow: 0px 0px 5px var(--hints-color); 
+  border-radius: 10px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ChatLogo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;      
+  background: white;
+  border: 0.2px solid var(--main-color);
+  animation: pop 0.2s ease forwards;
+  padding: 40px;
+  z-index: 10000; 
+
+}
+
+.SentSuccess {
+  position: fixed;
+  top: 13%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;      
+  background: white;
+
+  animation: showMessage 0.3s ease forwards;
+  box-shadow: 0px 0px 1px var(--hints-color); 
+  padding: 15px;
+  z-index: 10000; 
+}
+.AddCarButton {
+  position: fixed;
+  top: 20%;
+  right: 0px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;  
+  background: var(--secondary-color);
+  box-shadow: 0px 5px 5px var(--hints-color-gray);
+  opacity: 1;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  z-index: 9999; 
+}
+.AddCarButton:active{
+  color: var(--main-color);
+}
+.AddCarButton:hover{
+  color: var(--secondary-color);
+  background: var(--main-color);
+ 
+
+}
+
+.AddCarBox{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 85%;
+  border-radius: 5px;
+  flex-direction: column;
+  background: white;
+  padding: 10px;
+  font-size: 20px;
+  overflow-x: none;
+  overflow-y: auto;
+  border: 0.2px solid var(--main-color);
+  z-index: 9999; 
+  animation: AddContainerAnim 0.3s ease forwards;
+}
+.EDITCarBox{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 85%;
+  border-radius: 5px;
+  flex-direction: column;
+  background: white;
+  padding: 10px;
+  font-size: 20px;
+  overflow-x: none;
+  overflow-y: auto;
+  border: 0.2px solid var(--main-color);
+  z-index: 9999; 
+  animation: EditCarContainerAnim 0.3s ease forwards;
+}
+.AddCarP{
+  color: var(--main-color);
+  font-weight: bold;
+}
+.AddCarModelBackground{
+  width: 90%;
+  height: 70%;
+  padding: 20px;
+  border-radius: 4px;
+  max-width: 400px;
+}
+.Hidden{
+  display: none  ;
+}
+
+
+.PSentSuccess{
+  font-size: 18px;
+
+}
+
+.ButtonMessage{
+  background: var(--hints-color-gray);
+
+}
+
+.ButtonMessage:hover{
+  background: black;
+  
+}
+
+.AnimateInput{
+  max-width: 300px;
+  animation: showInput 1s ease forwards;
+}
+
+
+
+.LabelForFile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  font-size: 90%;
+  color: var(--button-color);
+  border: none;
+  border-radius: 0px;
+}
+.LabelForFile:hover{
+  font-size: 100%;
+}
+
+.AddCarPhotoDesign{
+  background: white;
+  border-radius: 10px;
+}
+.ImageFile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: scale-down;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-color);
+}
+
+.ImagesArea {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  overflow: auto;
+  padding: 10px;
+  width: 100%;
+  height: 180px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--hints-color);
+  border-radius: 8px;
+  margin: 20px auto;
+}
+
+.CarImageArea {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 0 5px #999;
+}
+
+.ImageContainer {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 100px;
+  margin: 5px;
+}
+
+
+
+.ImageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--main-color);
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  
+  align-items: center;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+}
+
+.ImageContainer:hover .ImageOverlay {
+  opacity: 0.5;
+}
+.ImageContainer:active .ImageOverlay {
+  opacity: 0.5;
+}
+.ImageContainer:active{
+  opacity: 0.5;
+}
+
+.ImageOverlay i {
+  color: var(--secondary-color);
+  list-style: none;
+  font-size: 20px;
+}
+
+.SideBar{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9;
+  height: 100%;
+  align-items: center;
+  background:white;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.SideButton{
+  background: transparent;
+  width: 100%;
+  color: var(--hints-color-gray) ;
+  font-size: 100%;
+  display: flex;
+  align-items: start;
+  font-weight: normal;
+  padding: 10px;
+
+}
+.SideButton:hover{
+  background: var(--hints-color);
+  color: var(--main-color);
+}
+
+.IconSideBarColor{
+  color: var(--main-color);
+  margin-right: 5px;
+}
+.SideButton:hover .IconSideBarColor{
+  color: var(--secondary-color);
+}
+.DivBackground{
+  width: 100%;
+  display: flex;
+  background: var(--main-color);
+  justify-content: center;
+  align-items: center;
+
+}
+.NoCarsFound{
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ 
+}
+.NoMore{
+  display: none;
+  border-radius: 2px;
+}
+
+.LoadingList{
+  display: none;
+}
+
+.PProfile{
+  color: var(--main-color);
+  font-weight: normal;
+  font-size: 15px;
+}
+
+
+.ProfileBox{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60%;
+  border-radius: 5px;
+  flex-direction: column;
+  background: white;
+  padding: 10px;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  border: 0.2px solid var(--main-color);
+  z-index: 9999; 
+  animation: AddContainerProfile 0.3s ease forwards;
+}
+.LiRequestContainer{
+  padding: 10px;
+  margin: 10px;
+  width: 100%;
+  height: 435px;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 1px  rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+@keyframes AddContainerProfile {
+  0% {
+    width: 0px;
+
+    opacity: 0;
+
+  }
+  100% {
+    width: 40%;
+ 
+    opacity: 0.90;
+
+  }
+}
+@keyframes AddContainerAnim {
+  0% {
+    width: 0px;
+
+    opacity: 0;
+
+  }
+  100% {
+    width: 80%;
+ 
+    opacity: 0.90;
+
+  }
+}
+
+@keyframes EditCarContainerAnim {
+    0% {
+    width: 0px;
+
+    opacity: 0;
+
+  }
+  100% {
+    width: 50%;
+ 
+    opacity: 0.90;
+
+  }
+}
+
+@keyframes paraghraph {
+  0%{font-size: 0;}
+  100%{font-size: 100%;}
+}
+@keyframes showMessage {
+  0% {
+    height: 0px;
+    opacity: 0;
+
+  }
+
+  100% {
+    height: 30px;
+    opacity: 0.9;
+  }
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+    height: 0px;
+  
+  }
+
+  100% {
+    opacity: 0.9;
+    height: 200px;
+   
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+  }
+}
+
+  @keyframes fadeIn {
+    0% {
+        opacity: 0; 
+    }
+    100% {
+        opacity: 1; 
+    }
+}
+
+@keyframes showInput {
+  0% {
+    opacity: 0;
+      width:  0px; 
+  }
+  100% {
+    opacity: 1;
+      width:60%; 
+  }
+}

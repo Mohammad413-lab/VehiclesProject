@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mycars</title>
+    <link rel="stylesheet" href="../../css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/all.min.css">
+    <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="../../css/viewmycar.css">
+</head>
+
+<body
+    style=" display: flex; flex-direction: column; justify-content: center; align-items: center;  overflow-x: hidden; width: 100%;height: 100%;">
+    <div id="Success"></div>
+    <div id="NavBar"></div>
+    <div id="Loading"></div>
+    <div id="ViewCar"></div>
+    <div id="SideBarContainer"></div>
+    <div id="AreYouSureContainer"></div>
+    <div id="NoCarsFound"></div>
+    <div id="UserProfile"></div>
+    <button id="ShowOrHideAddCarButton" class="AddCarButton"><i class="fa-solid fa-square-plus"></i></button>
+
+    <div id="AddCarContainer" class="AddCarBox Hidden">
+        <p class="AddCarP">Add your car </p>
+        <p class="CarInfoDesign">sale or rental is optional you need to fill one of them </p>
+        <div class="RowWithoutCenter">
+
+            <div style="width: 100%;">
+                <input id="InputPrice" type="text" placeholder="Type car price if car for sale.." />
+                <input id="InputRentalPrice" type="text" placeholder="Type car rental price if car for rental.." />
+                <p class="WarningParaghraph" id="WarningInputPriceOrReental"> please type car price or rental price</p>
+                <input id="InputColor" type="text" placeholder="Type car Color.." />
+                <p class="WarningParaghraph" id="WarningInputColor"> please type car color</p>
+                <input id="InputYear" type="text" placeholder="Type car year.." />
+                <p class="WarningParaghraph" id="WarningInputYear"> please type year of cars</p>
+
+            </div>
+            <input type="file" id="fileInput" accept="image/*" multiple hidden>
+            <label class="LabelForFile"
+                style="margin-left: 20px; width: 50px; height: 30px; border-radius: 10px; margin-right: 5px; opacity: 0.6;"
+                for="fileInput">
+                <i class="fa-solid fa-image"></i>
+            </label>
+
+            <div class="swiper-container">
+                <div id="Wrapper" class="swiper-wrapper">
+                    <div class="swiper-slide" style="display: flex; align-items: center;justify-content: center;">
+                        <img src="../../assets/images/carEmptyImage.jpg" style="width: 300px; height: 200px;">
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+
+            </div>
+
+
+
+
+        </div>
+        <div style="display: flex; flex-direction: column;  ">
+
+
+
+
+        </div>
+
+        <div class="Line"></div>
+        <p class="CarInfoDesign" style="max-width: 300px;">select car model or created one </p>
+        <div class="RowWithoutCenter">
+            <div class="AddCarModelBackground">
+                <div class="RowWithoutCenter">
+                    <select id="SelectedModel" style="margin-right: 4px; max-width: 200px;">
+                        <option disabled selected value="">select car model</option>
+                    </select>
+
+                    <button id="ShowCreateModel"
+                        style="width: 25px; height: 25px; display: flex; justify-content: center; align-items: center; margin-top: 3px;"><i
+                            class="fa-solid fa-circle-plus"></i></button>
+
+                </div>
+                <div id="DivInputModelName" class="Hidden">
+                    <input class="AnimateInput" id="InputModelName" type="text" placeholder="type model name.." />
+                    <button id="SaveModelNameButton">Save</button>
+
+                </div>
+                <p class="WarningParaghraph" id="WarningModel"> please select make car</p>
+
+            </div>
+            <textarea id="DescriptionInput" style="height: 100px; margin-left: 5px;"
+                placeholder="Type car description .."></textarea>
+
+        </div>
+
+
+
+        <p id="NoteCarMake" class="CarInfoDesign Hidden" style="max-width: 300px;">select car make or created one </p>
+        <div id="CarMakeContainer" class="AddCarModelBackground Hidden  " style=" max-height: 70px;">
+            <div class="RowWithoutCenter">
+                <select id="SelectedMake" class="AnimateInput" id="SelectedMake"
+                    style="margin-right: 4px; max-width: 200px;">
+                    <option disabled selected value="">select car make</option>
+                </select>
+                <button id="ShowInputCarMake"
+                    style="width: 25px; height: 25px; display: flex; justify-content: center; align-items: center; margin-top: 3px;"><i
+                        class="fa-solid fa-circle-plus"></i></button>
+
+            </div>
+            <div id="DiveInputCarMake" class="Hidden">
+                <input id="InputMakeName" class="AnimateInput" type="text" placeholder="type make name.." />
+                <button id="SaveMakeNameButton">Save</button>
+            </div>
+            <p class="WarningParaghraph" id="WarningMake"> please select make car</p>
+        </div>
+        <div style="width: 100%; align-items: end; justify-content: end; display: flex;">
+            <button id="AddCarButton" style=" width: 10%; margin-top: 20px; height: 50px;">Add <i
+                    class="fa-solid fa-square-plus"></i></button>
+        </div>
+
+
+    </div>
+
+    <div id="EditCarBox" class="EDITCarBox  Hidden" style="height: 60%; ;">
+        <div style="display: flex; justify-content: space-between; ">
+            <p class="AddCarP">Edit your car <i class="fa-solid fa-upload"></i></p>
+            <button class="AddCarP"
+                style="
+             background: transparent; color: black; height: 30px;display: flex; justify-content: center; align-items: center;"
+                id="CloseEditBox">Exit</button>
+        </div>
+
+
+        <div class="RowWithoutCenter">
+            <div>
+                <input id="InputPriceEdit" type="text" placeholder="Type car price if car for sale.." />
+                <input id="InputRentalPriceEdit" type="text" placeholder="Type car rental price if car for rental.." />
+                <p class="WarningParaghraph" id="WarningInputPriceOrReentalEdit"> </p>
+                <input id="InputColorEdit" type="text" placeholder="Type car Color.." />
+                <p class="WarningParaghraph" id="WarningInputColorEdit"> </p>
+                <input id="InputYearEdit" type="text" placeholder="Type car year.." />
+                <p class="WarningParaghraph" id="WarningInputYearEdit"> </p>
+            </div>
+            <label class="LabelForFile"
+                style="margin-left: 20px; width: 50px; height: 30px; border-radius: 10px; margin-right: 5px; opacity: 0.6;"
+                for="fileInputEdit">
+                <i class="fa-solid fa-image"></i>
+            </label>
+            <input type="file" id="fileInputEdit" accept="image/*" multiple hidden>
+            <div id="ImagesArea" class="ImagesArea">
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class="RowWithoutCenter">
+            <div class="AddCarModelBackground" style="width: 200px; margin-top: 5px; height: 30px; ">
+                <div class="RowWithoutCenter">
+                    <select id="SelectedModelEdit" style="margin-right: 4px; width:  100%; ">
+                        <option id="DisabledOption" disabled selected value="">select car model</option>
+                    </select>
+
+
+                </div>
+            </div>
+            <textarea id="DescriptionInputEdit" style="height: 100px; margin-left: 5px;"
+                placeholder="Type car description .."></textarea>
+
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <div></div>
+            <button id="SaveEditCarButton" style="width:20% ; ; margin-top: 40px;">Save</button>
+        </div>
+
+
+    </div>
+
+
+    <div class="ShowCarContainer">
+        <ul id="MyCarUl" class="CarUl">
+
+        </ul>
+    </div>
+    <div id="NoMoreContainer"></div>
+</body>
+<script src="../../pageshelper/swiper-bundle.min.js"></script>
+<script src="../../pageshelper/navbar.js" type="module"></script>
+<script src="../../pageshelper/loading.js" type="module"></script>
+<script src="../../pageshelper/carul.js" type="module"></script>
+<script src="../../pageshelper/mycarshelper.js" type="module"></script>
+<script src="../../js/mainpagesjs/mycars.js" type="module"></script>
+
+</html>
