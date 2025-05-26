@@ -10,9 +10,17 @@ import { loadingSideBar } from "../../pageshelper/sidebar.js";
 import { loadSwiper } from "../../functions/Swiper.js";
 import { loadingNoMore } from "../../pageshelper/nomorecars.js";
 import { pushSideBar } from "../../pageshelper/carul.js";
+import { loadingVecUl } from "../../pageshelper/requestorderUl.js";
+import { loadingVInfo } from "../../pageshelper/vinfo.js";
 
 
+
+
+await loadingVInfo();
 await loadingSideBar();
 await loadingNoMore();
+
+let myRequest = await ApiServices.getMyRequesyVechile();
+loadingVecUl(myRequest);
 
 

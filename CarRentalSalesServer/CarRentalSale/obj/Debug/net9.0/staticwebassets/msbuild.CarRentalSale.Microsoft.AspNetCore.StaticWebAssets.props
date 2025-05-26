@@ -3060,6 +3060,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\d658dd22-cc27-4c8f-b1f5-2e663f3070be.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\dac613a7-8964-435c-b45a-9a118b467699.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>CarRentalSale</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CarRentalSale</BasePath>
+      <RelativePath>uploads/cars/dac613a7-8964-435c-b45a-9a118b467699.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>gtcm3yfb68</Fingerprint>
+      <Integrity>ZEWbSYm1sSVBXWT0yNY1DKGetOnWTU1GrvZHMsPxmYQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\dac613a7-8964-435c-b45a-9a118b467699.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cars\dd287cf2-dc54-4574-953d-a48221029c73.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>CarRentalSale</SourceId>

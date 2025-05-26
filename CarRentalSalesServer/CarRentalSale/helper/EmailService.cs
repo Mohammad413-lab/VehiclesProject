@@ -19,7 +19,7 @@ public class EmailService
 
     public async Task<bool> SendEmailAsync(EmailRequest emailRequest)
     {
-        string apiKey = "here your api key ";
+        string apiKey = "your api";
 
         var emailData = new
         {

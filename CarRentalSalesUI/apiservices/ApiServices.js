@@ -665,6 +665,16 @@ export class ApiServices {
 
     }
 
+        static async getMyRequesyVechile() {
+        try {
+            const response = await fetch(ApiKeys.GetMyRequest, { method: "GET", headers: { "Content-Type": "application/json" } });
+            const myRequest = await response.json();
+            return myRequest;
+        } catch (ex) {
+            throw ex;
+        }
+    }
+
 
 
 

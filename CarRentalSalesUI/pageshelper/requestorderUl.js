@@ -10,11 +10,14 @@ import { searchCarsFromServer } from "./navbar.js";
 import { loadingNotFound } from "./nocarsfound.js";
 import { apiState } from "../static/apistate.js";
 import { localSearchNavBar } from "./navbar.js";
+import { UserKey } from "../static/User.js";
+import { showVInfo } from "./vinfo.js";
 
-export const requestUl = document.getElementById("CarUl");
+export const requestUl = document.getElementById("MyCarUlReq");
 
 await loadingNotFound();
-export let userCart = await ApiServices.getUserCart(user.userID);
+export let userCart = await ApiServices.getUserCart(UserKey.UserId
+);
 let userCartMap = {};
 if (Array.isArray(userCart)) {
     userCart.forEach(element => {
@@ -28,8 +31,8 @@ const forMe = `  <div class="swiper-slide">
 console.log(userCartMap);
 
 const liInformation = `
-   <div class="LiContainer">
-     
+   <div class="LiContainerReq" >
+     <p><i class="fa-solid fa-circle MainColor"></i> Active</p>
 <div class="swiper-container"  id="SwiperContainer">
     <div class="swiper-wrapper" id="SwiperWrapper" >
        
@@ -71,9 +74,8 @@ const liInformation = `
 
         
         <div style="display:flex;" >
-          <button id="AddToCartButton" class="HomeButtonAddTo MainColor">add <i class="fas fa-warehouse"></i>
-                    </button>
-            <button id="CarRequestButton" class="HomeButtonOrder">request <i class="fa-solid fa-hand"></i>
+         
+            <button id="CarRequestButton" class="HomeButtonOrder">cancel request <i class="fa-solid fa-hand"></i>
                     </button>
                      <button id="ChatButton" class="HomeButtonChat">chat    <i class="fa-solid fa-comment"></i>
                     </button>
@@ -88,9 +90,9 @@ const liInformation = `
     </div>
 
 `;
-export async function loadingCarUl(list) {
+export async function loadingVecUl(list) {
 
-    showUlList(list, carUlList, carUl);
+    showUlList(list, requestUlList, requestUl);
 
     
 }
@@ -116,7 +118,7 @@ export function requestUlList(car, reqUl) {
 
   
   
-
+   eventListener(viewButton,()=>showVInfo(car));
     eventListenerAsync(chatButton, async () => showChatLogo(car.user));
     modelName.textContent = car.model;
     carYear.textContent = car.year;

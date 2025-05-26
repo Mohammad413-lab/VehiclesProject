@@ -161,3 +161,4 @@ C:\Users\user\Desktop\CarRentalSalesProject\CarRentalSalesServer\CarRentalSale\b
 C:\Users\user\Desktop\CarRentalSalesProject\CarRentalSalesServer\CarRentalSale\bin\Debug\net9.0\CarRentalSale.pdb
 C:\Users\user\Desktop\CarRentalSalesProject\CarRentalSalesServer\CarRentalSale\obj\Debug\net9.0\CarRentalSale.genruntimeconfig.cache
 C:\Users\user\Desktop\CarRentalSalesProject\CarRentalSalesServer\CarRentalSale\obj\Debug\net9.0\ref\CarRentalSale.dll
+C:\Users\user\Desktop\CarRentalSalesProject\CarRentalSalesServer\CarRentalSale\obj\Debug\net9.0\CarRentalSale.sourcelink.json

@@ -41,7 +41,7 @@ export let ApiKeys = {
     GetSearchedCars:(contain,pageNumber)=>`${url}CarsContoller/GetCarsContain?countryId=${UserKey.CountryId}&contain=${contain}&pageNumber=${pageNumber}`,
     EditUser:url+"Users/EditUser",
     ChangePassword:url + "Users/ChangeUserPassword",
-    GetMyRequest:`${url} SalesOrder/GetMyOrderSale?userId=${UserKey.UserId}`
+    GetMyRequest:`${url}SalesOrder/GetMyOrderSale?userId=${UserKey.UserId}`
 
 }
 

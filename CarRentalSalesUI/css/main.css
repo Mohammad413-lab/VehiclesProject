@@ -260,6 +260,15 @@ a:hover{
   box-shadow: 0px 5px 1px  rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+.LiContainerReq{
+
+  padding: 10px;
+  margin: 10px;
+  height: 500px;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 1px  rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
 
 .LiContainerHorizantal{
   padding: 20px;
@@ -298,7 +307,14 @@ a:hover{
 .DivRow{
   display: flex;
   flex-direction: row;
-  width: 100%;
+  gap: 5px;
+
+}
+.DivRowGap{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
 }
 
 .LoadingContainer {
@@ -431,8 +447,12 @@ a:hover{
 
 .Line{
   width: 100%;
-  height: 0.5px;
-  background: #f0f2f5;
+  height: 2px;
+  background: var(--hints-color);
+}
+.BackgroundHint{
+  border-radius: 20px;
+  background: var(--hints-color);
 }
 
 .SuccessfulLogo{
@@ -456,9 +476,9 @@ a:hover{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;      
+  border-radius: 20px;      
   background: white;
-  border: 0.2px solid var(--main-color);
+  box-shadow: 0px 20px 50px  gray;
   animation: pop 0.2s ease forwards;
   padding: 40px;
   z-index: 10000; 
@@ -474,11 +494,10 @@ a:hover{
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-radius: 2px;      
+  border-radius: 50px;      
   background: white;
-
+  box-shadow: 0px 10px 20px  gray;
   animation: showMessage 0.3s ease forwards;
-  box-shadow: 0px 0px 1px var(--hints-color); 
   padding: 15px;
   z-index: 10000; 
 }
@@ -519,14 +538,14 @@ a:hover{
   transform: translate(-50%, -50%);
   width: 90%;
   height: 85%;
-  border-radius: 5px;
+  border-radius: 20px;
   flex-direction: column;
   background: white;
   padding: 10px;
   font-size: 20px;
   overflow-x: none;
   overflow-y: auto;
-  border: 0.2px solid var(--main-color);
+  box-shadow: 0px 20px 50px  gray;
   z-index: 9999; 
   animation: AddContainerAnim 0.3s ease forwards;
 }
@@ -537,14 +556,14 @@ a:hover{
   transform: translate(-50%, -50%);
   width: 90%;
   height: 85%;
-  border-radius: 5px;
+  border-radius: 20px;
   flex-direction: column;
   background: white;
   padding: 10px;
   font-size: 20px;
   overflow-x: none;
   overflow-y: auto;
-  border: 0.2px solid var(--main-color);
+  box-shadow: 0px 20px 50px  gray;
   z-index: 9999; 
   animation: EditCarContainerAnim 0.3s ease forwards;
 }
@@ -745,7 +764,14 @@ a:hover{
 .PProfile{
   color: var(--main-color);
   font-weight: normal;
-  font-size: 15px;
+  font-size: 0.7vw;
+}
+
+.PProfile2{
+  font-size: 0.7vw;
+  color: var(--hints-color-gray);
+  font-weight: normal;
+  
 }
 
 
@@ -755,7 +781,7 @@ a:hover{
   left: 50%;
   transform: translate(-50%, -50%);
   height: 60%;
-  border-radius: 5px;
+  border-radius: 20px;
   flex-direction: column;
   background: white;
   padding: 10px;
@@ -763,9 +789,27 @@ a:hover{
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
-  border: 0.2px solid var(--main-color);
+  box-shadow: 0px 20px 50px  gray;
   z-index: 9999; 
   animation: AddContainerProfile 0.3s ease forwards;
+}
+.VInfo{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  border-radius: 20px;
+  flex-direction: column;
+  background: white;
+  padding: 10px;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+   box-shadow: 0px 20px 50px  gray;
+  z-index: 9999; 
+  animation: AddContainerVInfo 0.3s ease forwards;
 }
 .LiRequestContainer{
   padding: 10px;
@@ -777,6 +821,32 @@ a:hover{
   border-radius: 10px;
 }
 
+
+.CarUlRequset{
+ 
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    list-style: none;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: center;
+
+}
+@keyframes AddContainerVInfo {
+  0% {
+    width: 0px;
+
+    opacity: 0;
+
+  }
+  100% {
+    width: 50%;
+ 
+    opacity: 0.99;
+
+  }
+}
 @keyframes AddContainerProfile {
   0% {
     width: 0px;
@@ -787,7 +857,7 @@ a:hover{
   100% {
     width: 40%;
  
-    opacity: 0.90;
+    opacity: 0.99;
 
   }
 }
@@ -801,7 +871,7 @@ a:hover{
   100% {
     width: 80%;
  
-    opacity: 0.90;
+    opacity: 0.99;
 
   }
 }
@@ -816,7 +886,7 @@ a:hover{
   100% {
     width: 50%;
  
-    opacity: 0.90;
+    opacity: 0.99;
 
   }
 }
@@ -834,7 +904,7 @@ a:hover{
 
   100% {
     height: 30px;
-    opacity: 0.9;
+    opacity: 0.99;
   }
 }
 @keyframes pop {
@@ -845,7 +915,7 @@ a:hover{
   }
 
   100% {
-    opacity: 0.9;
+    opacity: 0.99;
     height: 200px;
    
   }

@@ -21,7 +21,7 @@ namespace CarRentalSale.Controllers
         }
 
 
-        [HttpPost("GetMyOrderSale")]
+        [HttpGet("GetMyOrderSale")]
         public IActionResult GetMyOrderSale(int userId)
         {
             IEnumerable<OrderSaleResponse> orderSales = _salesOrderService.GetMyOrderSale(userId);

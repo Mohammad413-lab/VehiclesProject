@@ -105,8 +105,8 @@
     font-weight: normal;
 }
 .MainColor{
-    color:var(--secondary-color);
-    
+    color:black;
+    opacity: 0.8;   
 }
 .HomeButtonAddTo:hover {
     color: black;
