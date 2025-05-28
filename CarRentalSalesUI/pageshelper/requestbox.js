@@ -1,5 +1,9 @@
 import { createImage } from "../functions/CreateImageSlider.js";
 import { eventListener, eventListenerAsync } from "../functions/EventListener.js";
+import { RequestSale } from "../dtos/request/requestSale.js";
+import { ApiServices } from "../apiservices/ApiServices.js";
+import { UserKey } from "../static/User.js";
+import { showSucessfulLogo } from "./sendmessage.js";
 export async function loadingRequestBox() {
     return fetch("../../pageshelper/requestbox.html")
         .then(response => response.text())
@@ -12,7 +16,7 @@ export async function loadingRequestBox() {
 export async function showRequestBox(vehicle) {
 
     function fillBoxInformation() {
-        WrapperV.innerHTML='';
+        WrapperV.innerHTML = '';
         OwnerValue.textContent = vehicle.user.firstName + " " + vehicle.user.lastName;
         UserPhoneValue.textContent = vehicle.user.phoneNumber;
         EmailValue.textContent = vehicle.user.email;
@@ -36,7 +40,7 @@ export async function showRequestBox(vehicle) {
     const WrapperV = document.getElementById("WrapperV");
     const CarImages = document.getElementById("CarImages");
     const VStatus = document.getElementById("VStatus");
-    const NoteOrder = document.getElementById("NoteOrder");
+    const NoteOrder = document.getElementById("NoteOrderReq");
     const OwnerValue = document.getElementById("OwnerValue");
     const UserPhoneValue = document.getElementById("UserPhoneValue");
     const EmailValue = document.getElementById("EmailValue");
@@ -53,10 +57,14 @@ export async function showRequestBox(vehicle) {
     const requestNowButton = document.getElementById("RequestNow");
     const vRequest = document.getElementById("VRequest");
     vRequest.classList.remove("Hidden");
-    eventListener(ExitButton, ()=> hideRequestBox());
+    eventListener(ExitButton, () => hideRequestBox());
     eventListenerAsync(requestNowButton, async function () {
         let selectedValue = document.querySelector('input[name="OrderRequest"]:checked')?.value;
-        console.log(selectedValue);
+        if (selectedValue == 0) {
+            await requestSale(vehicle,NoteOrder,selectedValue);
+        }
+
+
     })
     fillBoxInformation();
 
@@ -66,4 +74,20 @@ export async function showRequestBox(vehicle) {
 export function hideRequestBox() {
     const vRequest = document.getElementById("VRequest");
     vRequest.classList.add("Hidden");
+}
+
+async function requestSale(vehicle, note, selectedValue) {
+
+    if (selectedValue == 0 && vehicle.carPrice != null) {
+        let request = new RequestSale(vehicle.carID, UserKey.UserId, vehicle.carPrice, note.value == "" ? null : note.value);
+        console.log(request);
+       let response = await ApiServices.addOrderSale(request);
+        if (response.Ok) {
+            showSucessfulLogo(response.Data.message);
+            note.value='';
+            hideRequestBox();
+
+        }
+    }
+
 }

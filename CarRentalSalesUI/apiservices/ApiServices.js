@@ -604,7 +604,7 @@ export class ApiServices {
             email: user.email,
             phoneNumber: user.phoneNumber,
             countryId: user.countryId,
-            address:user.address
+            address: user.address
         }
         try {
 
@@ -613,7 +613,7 @@ export class ApiServices {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(body) 
+                body: JSON.stringify(body)
 
             })
             const data = await response.json();
@@ -632,8 +632,8 @@ export class ApiServices {
 
     }
 
-    
-    static async changePassword(userId,oldPassword,newPassword) {
+
+    static async changePassword(userId, oldPassword, newPassword) {
         const body = {
             userID: userId,
             oldPassword: oldPassword,
@@ -646,7 +646,7 @@ export class ApiServices {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(body) 
+                body: JSON.stringify(body)
 
             })
             const data = await response.json();
@@ -665,7 +665,7 @@ export class ApiServices {
 
     }
 
-        static async getMyRequesyVechile() {
+    static async getMyRequesyVechile() {
         try {
             const response = await fetch(ApiKeys.GetMyRequest, { method: "GET", headers: { "Content-Type": "application/json" } });
             const myRequest = await response.json();
@@ -673,6 +673,41 @@ export class ApiServices {
         } catch (ex) {
             throw ex;
         }
+    }
+
+    static async addOrderSale(requestSale) {
+        console.log("this is request");
+        console.log(requestSale);
+        const body = {
+            carId: requestSale.carID,
+            userId: requestSale.userId,
+            totalAmount: requestSale.totalAmount,
+            notes: requestSale.note
+        }
+        try {
+
+            const response = await fetch(ApiKeys.AddSaleOrder, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+
+            });
+            const data = await response.json();
+
+            return {
+                Data: data,
+                Ok: response.ok,
+                Status: response.status
+            };
+
+        } catch (error) {
+            console.error("Error", error);
+            throw error;
+        }
+
+
     }
 
 
