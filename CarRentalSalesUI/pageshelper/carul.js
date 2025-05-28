@@ -11,6 +11,7 @@ import { loadingNotFound } from "./nocarsfound.js";
 import { apiState } from "../static/apistate.js";
 import { localSearchNavBar } from "./navbar.js";
 import { UserKey } from "../static/User.js";
+import { showRequestBox } from "./requestbox.js";
 
 export const carUl = document.getElementById("CarUl");
 apiState.ulState = carUl;
@@ -172,6 +173,7 @@ export function carUlList(car, carU) {
     const swiperWrapper= li.querySelector("#SwiperWrapper");
     const modelName = li.querySelector("#ModelNameValue");
     const carYear = li.querySelector("#CarYearValue");
+    const carRequestButton=li.querySelector("#CarRequestButton");
 
     if (userCartMap[car.carID]) {
         toggleClass(addToCartButton, true);
@@ -200,10 +202,12 @@ export function carUlList(car, carU) {
         }
     })
     eventListenerAsync(chatButton, async () => showChatLogo(car.user));
+    eventListenerAsync(carRequestButton,async ()=>await showRequestBox(car));
     modelName.textContent = car.model;
     carYear.textContent = car.year;
     price.textContent = car.carPrice ?? "No Price";
     rentalPrice.textContent = car.carRentalPrice ?? "No rental";
+    
     if (car == null || car.imagesPath == null || car.imagesPath.length == 0) {
         createImage(swiperContainer, "../../assets/images/carEmptyImage.jpg", false);
     } else {

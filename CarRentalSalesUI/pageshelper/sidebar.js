@@ -60,8 +60,47 @@ export async function ActiveSideBar(list, liFunc, ul, isCarUser) {
 
 
 }
+export async function ActiveSideBarForRequest(list, liFunc, ul) {
 
-async function Sorted(list, liFunc, ul, isCarUser, forButton) {
+    const profileButton=document.getElementById("ProfileButton");
+    const allButton = document.getElementById("AllButton");
+    const newestButton = document.getElementById("Newest");
+    const oldestButton = document.getElementById("Oldest");
+    const saleButton = document.getElementById("SaleButton");
+    const rentalButton = document.getElementById("RentalButton");
+    eventListenerAsync(newestButton, async function () {
+        apiState.isLoading = true;
+         SortedOrderRequest(list, liFunc, ul,  0);
+        apiState.isLoading = false;
+    });
+    eventListenerAsync(oldestButton, async function () {
+        showNoMore('',false);
+        SortedOrderRequest(list, liFunc, ul,  1);
+   
+    });
+    eventListenerAsync(saleButton, async function () {
+       
+        showNoMore('',false);
+        SortedOrderRequest(list, liFunc, ul, 2);
+   
+    });
+    eventListenerAsync(rentalButton, async function () {
+        showNoMore('',false);
+        SortedOrderRequest(list, liFunc, ul,3);
+      
+    });
+
+    eventListenerAsync(allButton, async function () {
+        showNoMore('',false);
+          SortedOrderRequest(list, liFunc, ul,  4);
+    });
+
+    eventListener(profileButton,()=>showUserProfile());
+        
+
+
+}
+ async function Sorted(list, liFunc, ul, isCarUser, forButton) {
     refreshApiState();
     let filterList = [];
     ul.innerHTML = '';
@@ -120,6 +159,29 @@ async function Sorted(list, liFunc, ul, isCarUser, forButton) {
 
 }
 
+async function SortedOrderRequest(list, liFunc, ul,  forButton) {
+    console.log(list);
+    let filterList = [];
+    ul.innerHTML = '';
+        switch (forButton) {
+            case 0: filterList = list.slice().sort((order1, order2) =>order2.car.year - order1.car.year);
+                break;
+            case 1: filterList = list.slice().sort((order1, order2) => order1.car.year - order2.car.year);
+                break;
+            case 2: filterList = list.slice().filter((order) => order.car.carPrice != null);
+                break;
+            case 3: filterList = list.slice().filter((order) => order.car.carRentalPrice != null);
+                break;
+            case 4: filterList = list;
+                break;
+        }
+       console.log(filterList)
+   
+
+    showUlList(filterList, liFunc, ul);
+    await refreshSwiper();
+
+}
 
 
 

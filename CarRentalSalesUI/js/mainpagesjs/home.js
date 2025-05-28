@@ -14,6 +14,7 @@ import { searchCarsFromServer } from "../../pageshelper/navbar.js";
 import { carUlList,carUl } from "../../pageshelper/carul.js";
 import { pushSideBar } from "../../pageshelper/carul.js";
 import { loadingUserProfile } from "../../pageshelper/userprofile.js";
+import { loadingRequestBox } from "../../pageshelper/requestbox.js";
 
 refreshApiState();
 apiState.currentApiType=0;
@@ -24,6 +25,7 @@ await loadingSideBar();
 await loadingSendMessageContent();
 await loadingSucessLogo();
 await loadingUserProfile();
+await loadingRequestBox();
 
 await pushSideBar();
 await searchCarsFromServer(carUlList, carUl, false);

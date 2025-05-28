@@ -19,11 +19,11 @@ public class EmailService
 
     public async Task<bool> SendEmailAsync(EmailRequest emailRequest)
     {
-        string apiKey = "your api";
+        string apiKey = "your api email key";
 
         var emailData = new
         {
-            sender = new { name = "CarRentalSale", email = "moosaqrb296@gmail.com" },
+            sender = new { name = "CarRentalSale", email = "your email " },
             to = new[] { new { email = emailRequest.To, name = "User" } },
             subject = emailRequest.Subject,
             htmlContent = emailRequest.Body

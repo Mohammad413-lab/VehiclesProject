@@ -1,4 +1,7 @@
 import { formattedDate } from "../functions/DateFormate.js";
+import { createImage } from "../functions/CreateImageSlider.js";
+import { eventListener } from "../functions/EventListener.js";
+import { RequestStatus,changeStatusColor } from "../static/Status.js";
 export async function loadingVInfo() {
     return fetch("../../pageshelper/vinfo.html")
         .then(response => response.text())
@@ -12,24 +15,30 @@ export function showVInfo(order) {
 
 
     function fillVecValue() {
-        NoteOrder.value = order.note;
-        OrderDate.textContent = order.orderDate;
-        OrderUpdate.textContent = order.updatedAt ? "Updated " + order.updatedAt : "Not updated yet";
-
-     
+        WrapperV.innerHTML='';
+        NoteOrder.textContent=order.note??"No note";
+        OrderDate.textContent = formattedDate(order.orderDate);
+        OrderUpdate.textContent = order.updatedAt ?  formattedDate(order.updatedAt)  : "Not updated yet";
         OwnerValue.textContent = order.car.user.firstName + " " + order.car.user.lastName;
         UserPhoneValue.textContent = order.car.user.phoneNumber;
         EmailValue.textContent = order.car.user.email;
         AddressValue.textContent = order.car.user.address;
         CountryValue.textContent = order.car.user.countryName;
-
-        PriceValue.textContent = order.car.carPrice + " USD";
-        RentalPriceValue.textContent = order.car.carRentalPrice ? order.car.carRentalPrice + " USD" : "-";
+        PriceValue.textContent = order.car.carPrice ;
+        RentalPriceValue.textContent = order.car.carRentalPrice ? order.car.carRentalPrice  : "-";
         MakeValue.textContent = order.car.make;
         ModelValue.textContent = order.car.model;
         YearValue.textContent = order.car.year;
         ColorValue.textContent = order.car.color;
-        VStatus.innerHTML = `<i class="fa-solid fa-circle MainColor"></i> ${order.car.status === 0 ? "Active" : "Inactive"}`;
+        changeStatusColor(order.status,VStatus);
+        VStatus.innerHTML = `<i class="fa-solid fa-circle MainColor"></i> ${RequestStatus[order.status]}`;
+        if(order.car.imagesPath.length==0){
+             createImage(WrapperV,"../../assets/images/carEmptyImage.jpg",false);
+        }else{
+            for(let image of order.car.imagesPath){
+                createImage(WrapperV,image,true);
+            }
+        }
     }
     const vInfoBox = document.getElementById("VInfoBox");
     const VInfoBox = document.getElementById("VInfoBox");
@@ -51,8 +60,10 @@ export function showVInfo(order) {
     const ModelValue = document.getElementById("ModelValue");
     const YearValue = document.getElementById("YearValue");
     const ColorValue = document.getElementById("ColorValue");
+    const CloseButton=document.getElementById("CloseButton");
     fillVecValue();
     vInfoBox.classList.remove("Hidden");
+    eventListener(CloseButton,()=>vInfoBox.classList.add("Hidden"));
 
 }
 

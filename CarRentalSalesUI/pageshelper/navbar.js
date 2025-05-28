@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.text())
     .then(data => {
       document.getElementById("NavBar").innerHTML = data;
-      const emailButton=document.getElementById("EmailButton");
+      const emailButton = document.getElementById("EmailButton");
       const dropDownMenuButton = document.getElementById("DropDownMenuButton");
       const dropDownMenuUl = document.getElementById("DropDownMenuUl");
       let isClickedDropDownMenu = false;
       const logOutButton = document.getElementById("ButtonLogout");
-      emailButton.innerHTML= `<i class="fa-solid fa-envelope-circle-check" style="margin-top:2px;"></i> ${UserKey.User.email} `
+      emailButton.innerHTML = `<i class="fa-solid fa-envelope-circle-check" style="margin-top:2px;"></i> ${UserKey.User.email} `
       eventListener(dropDownMenuButton, function () {
         if (isClickedDropDownMenu) {
           isClickedDropDownMenu = false;
@@ -152,39 +152,83 @@ async function getMoreCars(response, liFunc, ul) {
 
 
 export function localSearchNavBar(liFunc, ul, list) {
-  let filterCar = []
+ 
   const carSearch = document.getElementById("CarSearch");
   carSearch.addEventListener('input', async function () {
 
     showNoMore("", false);
-    showNoCarFound('',false);
+    showNoCarFound('', false);
     let userInput = carSearch.value;
-
     ul.innerHTML = '';
-    filterCar = list.filter(car => {
-      return car.year.toString() === userInput ||
-        car.carPrice != null && car.carPrice.toString() === userInput ||
-        car.rentalPrice != null && car.rentalPrice.toString() === userInput ||
-        car.model.toLowerCase().includes(userInput.toLowerCase()) ||
-        car.make.toLowerCase().includes(userInput.toLowerCase())
-    });
-    if(filterCar.length==0){
-      showNoCarFound("No vehicle found",true);
-    }
-    showUlList(filterCar, liFunc, ul);
+    filterCars(userInput,list,liFunc,ul);
     await refreshSwiper();
 
   }
 
   );
 
+   onScrollWindow("You dont have more vehicle in your list");
+
+}
+
+export function localSearchNavBarReq(liFunc, ul, list) {
+ 
+  const carSearch = document.getElementById("CarSearch");
+  carSearch.addEventListener('input', async function () {
+
+    showNoMore("", false);
+    showNoCarFound('', false);
+    let userInput = carSearch.value;
+    ul.innerHTML = '';
+    filterRequestOrder(userInput,list,liFunc,ul);
+    await refreshSwiper();
+
+  });
+
+
+  onScrollWindow("You dont have more vehicle in your list");
+
+
+
+}
+
+
+function filterRequestOrder(input, list,liFunc,ul) {
+   let filterReq = list.filter(order => {
+    return order.car.year.toString() === input ||
+      order.car.carPrice != null && order.car.carPrice.toString() === input ||
+      order.car.rentalPrice != null && order.car.rentalPrice.toString() === input ||
+      order.car.model.toLowerCase().includes(input.toLowerCase()) ||
+      order.car.make.toLowerCase().includes(input.toLowerCase())
+  });
+  if (filterReq.length == 0) {
+    showNoCarFound("No vehicle found", true);
+  }
+  showUlList(filterReq, liFunc, ul);
+
+}
+
+function filterCars(input, list,liFunc,ul) {
+   let filterCar  = list.filter(car => {
+    return car.year.toString() === input ||
+      car.carPrice != null && car.carPrice.toString() === input ||
+      car.rentalPrice != null && car.rentalPrice.toString() === input ||
+      car.model.toLowerCase().includes(input.toLowerCase()) ||
+      car.make.toLowerCase().includes(input.toLowerCase())
+  });
+  if (filterCar.length == 0) {
+    showNoCarFound("No vehicle found", true);
+  }
+  showUlList(filterCar, liFunc, ul);
+}
+
+
+function onScrollWindow(text){
   window.onscroll = async function () {
     if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
- 
-       showNoMore("You dont have more vehicle in your list", true);
+      showNoMore(text, true);
     }
   };
-
 
 }
 

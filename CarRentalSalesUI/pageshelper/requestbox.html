@@ -1,29 +1,42 @@
-<div id="VInfoBox" class="VInfo Hidden">
+<div id="VRequest" class="VInfo Hidden">
     <div class="DivRow" style="gap: 10px;">
         <div class="swiper-container" style="width: 40%;">
             <div id="WrapperV" class="swiper-wrapper">
 
-        
+
             </div>
 
             <div class="swiper-pagination"></div>
 
         </div>
-        <div>
-            <div class="BackgroundHint" style="max-width: 100px;">
-                <p id="VStatus"> <i class="fa-solid fa-circle MainColor"></i> Active</p>
+        <div style="width: 100%;">
+            <div class="DivRow" style="width: 100%; justify-content: space-between;">
+                <div  style="max-width: 100px; ">
+                    <p id="VStatus"> <i class="fa-solid fa-circle MainColor"></i> Active</p>
+                </div>
+                <button id="ExitButtonReq" class="PProfile" style="background: transparent; color: black;">Exit</button>
             </div>
 
 
+            <div class="DivRow">
+                <label class="DivRow" for="SaleInput">
+                    <input style="display: none;" id="SaleInput" type="radio" name="OrderRequest" value="0">
+                    <div class="CheckedRadio"></div>
+                    <span class="PProfile2">Sale</span>
+
+                </label>
+
+
+                <label class="DivRow" for="RentalInput">
+                    <input style="display: none;" id="RentalInput" type="radio" name="OrderRequest" value="1">
+                    <div class="CheckedRadio"></div>
+                    <span class="PProfile2">Rental</span>
+                </label>
+            </div>
             <p class="PProfile2">Note <i class="fa-solid fa-clipboard Main"></i></p>
-            <p class="PProfile" id="NoteOrder"></p>
+            <input class="PProfile" id="NoteOrder" type="text" placeholder="type your note here..."></input>
 
 
-            <p class="PProfile2">Request date <i class="fa-solid fa-calendar-check MainColor"></i> </p>
-            <p class="PProfile" id="OrderDate">asdasdasf</p>
-
-            <p class="PProfile2">Request Updated <i class="fa-solid fa-calendar-check MainColor"></i></p>
-            <p class="PProfile" id="OrderUpdate">asdasdasf</p>
         </div>
     </div>
     <div>
@@ -100,7 +113,8 @@
             <p class="PProfile2">Color <i class="fa-solid fa-check-to-slot MainColor"></i></p>
             <p id="ColorValue" class="PProfile">-</p>
         </div>
-        <div style="width: 100%; display: flex; justify-content: end; align-items: end;"><button id="CloseButton">close</button></div>
+        <div style="width: 100%; display: flex; justify-content: end; align-items: end;"><button
+                id="RequestNow">Request now</button></div>
     </div>
 
 
