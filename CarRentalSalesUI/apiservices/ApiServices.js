@@ -675,6 +675,25 @@ export class ApiServices {
         }
     }
 
+       static async getMyVechileRequested() {
+        try {
+            const response = await fetch(ApiKeys.GetMyVehcilRequested, { method: "GET", headers: { "Content-Type": "application/json" } });
+            const myRequested = await response.json();
+            return myRequested;
+        } catch (ex) {
+            throw ex;
+        }
+    }
+
+    static async getMyRequesyVechileId() {
+        try {
+            const response = await fetch(ApiKeys.GetMyVehcileRequestId, { method: "GET", headers: { "Content-Type": "application/json" } });
+            const myRequest = await response.json();
+            return myRequest;
+        } catch (ex) {
+            throw ex;
+        }
+    }
     static async addOrderSale(requestSale) {
         console.log("this is request");
         console.log(requestSale);

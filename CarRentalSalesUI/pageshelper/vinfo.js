@@ -11,10 +11,13 @@ export async function loadingVInfo() {
 }
 
 
-export function showVInfo(order) {
+export function showVInfo(order,person) {
 
 
     function fillVecValue() {
+        if(person){
+             const person=document.getElementById("Person").textContent="Request from ";
+        }
         WrapperV.innerHTML='';
         NoteOrder.textContent=order.note??"No note";
         OrderDate.textContent = formattedDate(order.orderDate);

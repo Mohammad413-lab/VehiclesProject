@@ -19,6 +19,7 @@ const carSuggUl = document.getElementById("SuggUl");
 
 await loadingNotFound();
 export let userCart = await ApiServices.getUserCart(UserKey.UserId);
+export const userRequest = await ApiServices.getMyRequesyVechileId();
 let userCartMap = {};
 if (Array.isArray(userCart)) {
     userCart.forEach(element => {
@@ -60,8 +61,10 @@ if (carSuggUl) {
     });
 }
 const liInformation = `
+
+ 
    <div class="LiContainer">
-     
+   <div id="OverLayBack" class="OverlayBack Hidden" ><p class="OverLayParagraph"> Requested <i class="fa-solid fa-hand"></i> </p></div>
 <div class="swiper-container"  id="SwiperContainer">
     <div class="swiper-wrapper" id="SwiperWrapper" >
        
@@ -73,7 +76,6 @@ const liInformation = `
 
 
         <div class="DivRow">
-      
            <div class="PriceBackground">
                <p id="ModelName" class="CarInfoDesign">Model <i class="fa-solid fa-check-to-slot MainColor"></i> </p>
             <p id="ModelNameValue" class="CarInfoDesignValue">--</p>
@@ -100,6 +102,7 @@ const liInformation = `
             
          
         </div>
+         <div class="Line"></div>
 
         
         <div style="display:flex;" >
@@ -119,15 +122,17 @@ const liInformation = `
 
     </div>
 
+  
+
 `;
 export async function loadingCarUl(list) {
 
     showUlList(list, carUlList, carUl);
 
-    
+
 }
 
-export async function pushSideBar(list,bool){
+export async function pushSideBar(list, bool) {
     await ActiveSideBar(list, carUlList, carUl, bool);
 }
 
@@ -141,7 +146,7 @@ export function loadingCarUlSugg(list) {
 }
 
 export function loadingLocalSearchedNavBar(list) {
-    localSearchNavBar(carUlList,carUl,list);
+    localSearchNavBar(carUlList, carUl, list);
 }
 
 function toggleClass(button, isTrue) {
@@ -170,10 +175,17 @@ export function carUlList(car, carU) {
     const addToCartButton = li.querySelector("#AddToCartButton");
     const chatButton = li.querySelector("#ChatButton");
     const swiperContainer = li.querySelector("#SwiperContainer");
-    const swiperWrapper= li.querySelector("#SwiperWrapper");
+    const swiperWrapper = li.querySelector("#SwiperWrapper");
     const modelName = li.querySelector("#ModelNameValue");
     const carYear = li.querySelector("#CarYearValue");
-    const carRequestButton=li.querySelector("#CarRequestButton");
+    const carRequestButton = li.querySelector("#CarRequestButton");
+    const overLay = li.querySelector("#OverLayBack");
+
+    if (userRequest.includes(car.carID)) {
+        toggleOverLay(overLay);
+    }
+
+
 
     if (userCartMap[car.carID]) {
         toggleClass(addToCartButton, true);
@@ -202,18 +214,18 @@ export function carUlList(car, carU) {
         }
     })
     eventListenerAsync(chatButton, async () => showChatLogo(car.user));
-    eventListenerAsync(carRequestButton,async ()=>await showRequestBox(car));
+    eventListenerAsync(carRequestButton, async () => await showRequestBox(car,overLay));
     modelName.textContent = car.model;
     carYear.textContent = car.year;
     price.textContent = car.carPrice ?? "No Price";
     rentalPrice.textContent = car.carRentalPrice ?? "No rental";
-    
+
     if (car == null || car.imagesPath == null || car.imagesPath.length == 0) {
         createImage(swiperContainer, "../../assets/images/carEmptyImage.jpg", false);
     } else {
         for (let image of car.imagesPath) {
             createImage(swiperWrapper, image, true);
-            
+
         }
 
     }
@@ -223,6 +235,11 @@ export function carUlList(car, carU) {
     carU.appendChild(li)
 }
 
+
+function toggleOverLay(overLay) {
+    overLay.classList.remove("Hidden");
+    overLay.classList.add("Flex");
+}
 
 
 

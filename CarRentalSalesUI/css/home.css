@@ -81,6 +81,44 @@
     border-radius: 4px;
     font-weight: normal;
 }
+
+.HomeButtonAccept {
+    padding: 10px;
+    width: 60%;
+    height: 60%;
+    font-size: 90%;
+    background-color: white;
+    color: 	#66b266;
+    white-space: nowrap;
+    border: none;
+    border-radius: 4px;
+    font-weight: normal;
+}
+
+.HomeButtonHold {
+    padding: 10px;
+    width: 60%;
+    height: 60%;
+    font-size: 90%;
+    background-color: white;
+    color:#a98b00	;
+    white-space: nowrap;
+    border: none;
+    border-radius: 4px;
+    font-weight: normal;
+}
+.HomeButtonCancel {
+    padding: 10px;
+    width: 60%;
+    height: 60%;
+    font-size: 90%;
+    background-color: white;
+    color:#b81e1e;
+    white-space: nowrap;
+    border: none;
+    border-radius: 4px;
+    font-weight: normal;
+}
 .HomeButtonChat {
     padding: 10px;
     width: 60%;
@@ -106,7 +144,7 @@
 }
 .MainColor{
     color:black;
-    opacity: 0.8;   
+
 }
 .HomeButtonAddTo:hover {
     color: black;
@@ -118,6 +156,24 @@
 .HomeButtonOrder:hover {
     color: black;
    
+    background: white;
+    width: 60%;
+}
+
+
+.HomeButtonAccept:hover {
+    color: black;
+    background: white;
+    width: 60%;
+}
+.HomeButtonHold:hover {
+    color: black;
+    background: white;
+    width: 60%;
+}
+
+.HomeButtonCancel:hover {
+    color: black;
     background: white;
     width: 60%;
 }

@@ -4,7 +4,7 @@ import { loadingSucessLogo,loadingSendMessageContent } from "../../pageshelper/s
 import { loadingSideBar } from "../../pageshelper/sidebar.js";
 import { loadSwiper } from "../../functions/Swiper.js";
 import { loadingNoMore } from "../../pageshelper/nomorecars.js";
-import { loadingVecUl } from "../../pageshelper/requestorderUl.js";
+import { loadingVecRequestedUl } from "../../pageshelper/requestorderUl.js";
 import { loadingVInfo } from "../../pageshelper/vinfo.js";
 import { activeSideBarForRequest } from "../../pageshelper/requestorderUl.js";
 import { loadingUserProfile } from "../../pageshelper/userprofile.js";
@@ -20,9 +20,6 @@ await loadingSucessLogo();
 await loadSwiper();
 await loadingSendMessageContent();
 
-let myRequest = await ApiServices.getMyVechileRequested();
-await activeLocalNavBarRequestSearch(myRequest);
-activeSideBarForRequest(myRequest);
-loadingVecUl(myRequest);
+let myRequested= await ApiServices.getMyVechileRequested();
 
-
+loadingVecRequestedUl(myRequested);

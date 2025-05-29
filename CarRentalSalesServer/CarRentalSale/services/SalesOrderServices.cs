@@ -19,6 +19,21 @@ namespace CarRentalSale.services
         {
           return  SalesOrderRepository.GetMyOrderSale(userId);
         }
+
+        public IEnumerable<OrderSaleResponse> GetMyRequestedVehicle(int userId)
+        {
+            return SalesOrderRepository.GetMyRequestedVehicle(userId);
+        }
+
+        public IEnumerable<int> GetMyRequestVehicleId(int userId)
+        {
+            return SalesOrderRepository.GetMyRequestVehicleId(userId);
+        }
+
+        public void UpdateRequested(short status, int saleOrderId)
+        {
+            SalesOrderRepository.UpdateRequested(status, saleOrderId);
+        }
     }
 
 }

@@ -13,9 +13,11 @@ export async function loadingRequestBox() {
 }
 
 
-export async function showRequestBox(vehicle) {
+export async function showRequestBox(vehicle,overLay) {
 
     function fillBoxInformation() {
+
+     
         WrapperV.innerHTML = '';
         OwnerValue.textContent = vehicle.user.firstName + " " + vehicle.user.lastName;
         UserPhoneValue.textContent = vehicle.user.phoneNumber;
@@ -61,7 +63,7 @@ export async function showRequestBox(vehicle) {
     eventListenerAsync(requestNowButton, async function () {
         let selectedValue = document.querySelector('input[name="OrderRequest"]:checked')?.value;
         if (selectedValue == 0) {
-            await requestSale(vehicle,NoteOrder,selectedValue);
+            await requestSale(vehicle,NoteOrder,selectedValue,overLay);
         }
 
 
@@ -76,7 +78,7 @@ export function hideRequestBox() {
     vRequest.classList.add("Hidden");
 }
 
-async function requestSale(vehicle, note, selectedValue) {
+async function requestSale(vehicle, note, selectedValue,overLay) {
 
     if (selectedValue == 0 && vehicle.carPrice != null) {
         let request = new RequestSale(vehicle.carID, UserKey.UserId, vehicle.carPrice, note.value == "" ? null : note.value);
@@ -84,6 +86,8 @@ async function requestSale(vehicle, note, selectedValue) {
        let response = await ApiServices.addOrderSale(request);
         if (response.Ok) {
             showSucessfulLogo(response.Data.message);
+            overLay.classList.remove("Hidden");
+            overLay.classList.add("Flex");
             note.value='';
             hideRequestBox();
 

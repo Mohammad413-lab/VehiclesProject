@@ -150,6 +150,7 @@ const liMyCar = `
             
          
         </div>
+         <div class="Line"></div>
         <div style="display:flex;" >
           <button id="EditCarButton" class="HomeButtonAddTo MainColor">edit <i class="fa-solid fa-upload"></i>
                     </button>

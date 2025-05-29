@@ -4,6 +4,7 @@ using CarRentalSale.dtos.response;
 using CarRentalSale.models;
 using CarRentalSale.response;
 using Microsoft.Data.SqlClient;
+using Org.BouncyCastle.Tls;
 
 namespace CarRentalSale.datarepositories
 {
@@ -38,10 +39,7 @@ namespace CarRentalSale.datarepositories
         {
             try
             {
-                Dictionary<int, List<string>> allCarsImages = CarsRepository.GetAllCarImages();
-                List<OrderSaleResponse> orderSale = [];
-                using SqlConnection connection = DatabaseAccess.GetConnection();
-                connection.Open();
+
                 string query = @"
 SELECT
     c.CarId,
@@ -76,8 +74,92 @@ JOIN Users u ON c.UserId = u.UserId
 JOIN Countries co ON u.CountryId = co.CountryId
 JOIN Models m ON c.ModelId = m.ModelId
 JOIN Makes ma ON m.MakeId = ma.MakeId
-WHERE s.UserId = 24
+WHERE s.UserId = @userId
 ORDER BY s.OrderDate ASC, s.UpdatedAt Asc ";
+
+
+                return GetRequested(query, userId).AsEnumerable();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"SERVER ERROR --> {ex}");
+            }
+
+        }
+
+
+
+        public static IEnumerable<int> GetMyRequestVehicleId(int userId)
+        {
+            List<int> carsId = [];
+            using SqlConnection connection = DatabaseAccess.GetConnection();
+            connection.Open();
+            string query = @"SELECT CarId FROM SalesOrder WHERE UserId = @userId
+            UNION
+            SELECT CarId FROM RentalsOrder WHERE UserId = @userId;";
+            using SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.Add("@userId", SqlDbType.Int).Value = userId;
+            using SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                carsId.Add((int)reader["CarId"]);
+            }
+
+
+            return carsId.AsEnumerable();
+        }
+
+
+        public static IEnumerable<OrderSaleResponse> GetMyRequestedVehicle(int userId)
+        {
+            string query = @"SELECT
+    c.CarId,
+    ma.MakeName AS Make, 
+    m.ModelName AS Model, 
+    c.Year, 
+    c.Price, 
+    c.RentalPrice, 
+    c.Color, 
+    c.Status, 
+    c.PurchaseDate,
+    c.PriceDiscount,
+    c.RentalDiscount,
+    c.Description,
+    u.UserID,
+    u.FirstName,
+    u.LastName,
+    u.Email,
+    u.PhoneNumber,
+    u.Address,
+    u.CountryId,
+    co.CountryName, 
+	s.SalesOrderId,
+	s.OrderDate,
+	s.TotalAmount,
+	s.Notes,
+	s.Status as OrderStatus,
+	s.UpdatedAt
+FROM SalesOrder s
+JOIN Cars c On s.CarId=c.CarID
+JOIN Users u ON s.UserId = u.UserId
+JOIN Countries co ON u.CountryId = co.CountryId
+JOIN Models m ON c.ModelId = m.ModelId
+JOIN Makes ma ON m.MakeId = ma.MakeId
+WHERE c.UserId = @userId
+ORDER BY s.OrderDate ASC, s.UpdatedAt Asc ;";
+
+            return GetRequested(query, userId).AsEnumerable();
+        }
+
+        private static IEnumerable<OrderSaleResponse> GetRequested(string query, int userId)
+        {
+            try
+            {
+                Dictionary<int, List<string>> allCarsImages = CarsRepository.GetAllCarImages();
+                List<OrderSaleResponse> orderSale = [];
+                using SqlConnection connection = DatabaseAccess.GetConnection();
+                connection.Open();
+
                 using SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.Add("@userId", SqlDbType.Int).Value = userId;
                 using SqlDataReader reader = command.ExecuteReader();
@@ -128,7 +210,7 @@ ORDER BY s.OrderDate ASC, s.UpdatedAt Asc ";
                         Note = reader["Notes"] != DBNull.Value ? (string)reader["Notes"] : null,
                         Status = (byte)reader["OrderStatus"],
                         UpdatedAt = reader["UpdatedAt"] != DBNull.Value ? (DateTime)reader["UpdatedAt"] : null,
-                        Car=car
+                        Car = car
 
                     });
                 }
@@ -142,6 +224,27 @@ ORDER BY s.OrderDate ASC, s.UpdatedAt Asc ";
         }
 
 
+        public static void UpdateRequested(short status, int saleOrderId)
+        {
+            try
+            {
 
+                using SqlConnection connection = DatabaseAccess.GetConnection();
+                connection.Open();
+                string query = @"Update SalesOrder set Status=@status, UpdatedAt=@updatedAt where SalesOrderId=@saleOrderId ;";
+                using SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.Add("@status", SqlDbType.TinyInt).Value = status;
+                command.Parameters.Add("@updatedAt", SqlDbType.DateTime).Value = DateTime.Now;
+                command.Parameters.Add("@saleOrderId", SqlDbType.Int).Value = saleOrderId;
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                 throw new Exception($"SERVER ERROR --> {ex}");
+            }
+
+
+
+        }
     }
 }

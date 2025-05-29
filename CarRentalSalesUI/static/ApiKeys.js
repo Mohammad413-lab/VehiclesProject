@@ -43,6 +43,8 @@ export let ApiKeys = {
     ChangePassword:url + "Users/ChangeUserPassword",
     GetMyRequest:`${url}SalesOrder/GetMyOrderSale?userId=${UserKey.UserId}`,
     AddSaleOrder:`${url}SalesOrder/AddSaleOrder`,
+    GetMyVehcileRequestId:url+"SalesOrder/GetMyRequestVehiclesId?userId="+UserKey.UserId,
+    GetMyVehcilRequested:url + "SalesOrder/GetMyRequestedVehicles?userId="+UserKey.UserId
 
 }
 
