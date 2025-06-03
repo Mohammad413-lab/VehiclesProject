@@ -54,7 +54,7 @@ namespace CarRentalSale.Controllers
 
 
               
-        [HttpPost("UpdateRequestSale")]
+        [HttpPatch("UpdateRequestSale")]
         public IActionResult UpdateRequestSale(short status,int saleOrderId)
         {
             try
@@ -64,6 +64,7 @@ namespace CarRentalSale.Controllers
                      return Ok(new { message = "You need to fill exist information", status = true });
                 }
                 _salesOrderService.UpdateRequested(status, saleOrderId);
+           
                 return Ok(new { message = "Request status updated", status = true });
             }
             catch (Exception ex)

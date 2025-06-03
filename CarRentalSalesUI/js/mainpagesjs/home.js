@@ -36,6 +36,7 @@ let token = sessionStorage.getItem("token");
 let cars = [];
 
 apiState.listState = await ApiServices.getCountryCars(1);
+
 apiState.listState.forEach(carFromJson => {
     let car = new Car();
     car.fillCarFromjson(carFromJson);

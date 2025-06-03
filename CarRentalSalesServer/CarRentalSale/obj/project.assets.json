@@ -2424,19 +2424,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {}
+    "C:\\Users\\moham\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\CarRentalSalesProject\\CarRentalSalesServer\\CarRentalSale\\CarRentalSale.csproj",
+      "projectUniqueName": "D:\\VehiclesProject\\CarRentalSalesServer\\CarRentalSale\\CarRentalSale.csproj",
       "projectName": "CarRentalSale",
-      "projectPath": "C:\\Users\\user\\Desktop\\CarRentalSalesProject\\CarRentalSalesServer\\CarRentalSale\\CarRentalSale.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\CarRentalSalesProject\\CarRentalSalesServer\\CarRentalSale\\obj\\",
+      "projectPath": "D:\\VehiclesProject\\CarRentalSalesServer\\CarRentalSale\\CarRentalSale.csproj",
+      "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
+      "outputPath": "D:\\VehiclesProject\\CarRentalSalesServer\\CarRentalSale\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -2460,7 +2460,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -2514,7 +2514,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

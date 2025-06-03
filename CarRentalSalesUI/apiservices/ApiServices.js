@@ -729,6 +729,34 @@ export class ApiServices {
 
     }
 
+       static async updateRequestStatus(orderId,status) {
+    
+        try {
+
+            const response = await fetch(ApiKeys.UpdateRequestStatus(orderId,status), {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+            });
+            const data = await response.json();
+
+            return {
+                Data: data,
+                Ok: response.ok,
+                Status: response.status
+            };
+
+        } catch (error) {
+            console.error("Error", error);
+            throw error;
+        }
+
+
+    }
+
+
 
 
 

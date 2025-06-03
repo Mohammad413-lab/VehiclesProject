@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-let inputSearched = '';
+let inputSearched = ''; 
 
 export async function searchCarsFromServer(liFunc, ul, isForUserCars) {
   const carSearch = document.getElementById("CarSearch");

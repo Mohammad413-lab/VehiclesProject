@@ -2,7 +2,7 @@
 import { showUlList } from "../functions/ShowUlList.js";
 import { eventListener, eventListenerAsync } from "../functions/EventListener.js"
 import { ApiServices } from "../apiservices/ApiServices.js";
-import { showChatLogo } from "./sendmessage.js";
+import { showChatLogo, showSucessfulLogo } from "./sendmessage.js";
 import { createImage } from "../functions/CreateImageSlider.js";
 import { loadingNotFound } from "./nocarsfound.js";
 import { UserKey } from "../static/User.js";
@@ -194,7 +194,7 @@ export async function activeLocalNavBarRequestSearch(list) {
 export function requestUlList(order, reqUl) {
     const li = document.createElement("li");
     li.innerHTML = liInformation;
-    const carImages = li.querySelector("#CarImages");
+
     const rentalPrice = li.querySelector("#RentalPriceValue");
     const price = li.querySelector("#PriceValue");
     const viewButton = li.querySelector("#ViewButton");
@@ -232,7 +232,7 @@ export function requestUlList(order, reqUl) {
 export function requestedVecUlList(order, reqUl) {
     const li = document.createElement("li");
     li.innerHTML = liInformationMyRequested;
-    const carImages = li.querySelector("#CarImages");
+    const acceptButton = li.querySelector("#CarAcceptButton");
     const rentalPrice = li.querySelector("#RentalPriceValue");
     const price = li.querySelector("#PriceValue");
     const viewButton = li.querySelector("#ViewButton");
@@ -247,6 +247,14 @@ export function requestedVecUlList(order, reqUl) {
 
     eventListener(viewButton, () => showVInfo(order,true));
     eventListenerAsync(chatButton, async () => showChatLogo(order.car.user));
+    eventListenerAsync(acceptButton,async function(){
+        let response=await ApiServices.updateRequestStatus(order.saleOrderId,1);
+        console.log(order)
+        if(response.Ok){
+             showSucessfulLogo("Accepted vechile for "+order.car.user.firstName +" " +order.car.user.lastName);
+            }
+       
+    });
     modelName.textContent = order.car.model;
     carYear.textContent = order.car.year;
     price.textContent = order.car.carPrice ?? "No Price";

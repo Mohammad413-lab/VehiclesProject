@@ -12,8 +12,7 @@
     --shadow-color:rgba(0, 0, 0, 0.06);
     --background-gray-opac:#dddd;
     --white-blue-color:#f0f4f8;
-    --soft-white-color: #FEFEFE;;
-  
+    --soft-white-color: #FEFEFE;
   }
   body{
     background: var(--white-blue-color);
@@ -790,7 +789,6 @@ a:hover{
   font-size: 0.7vw;
   color:black;
   opacity: 0.2;
- 
   font-weight: normal;
   font-family: 'Tajawal', sans-serif;
   
