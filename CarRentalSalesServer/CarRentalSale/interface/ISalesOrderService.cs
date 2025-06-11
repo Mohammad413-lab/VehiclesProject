@@ -18,6 +18,10 @@ namespace CarRentalSale.interfacee
 
 
 
+        void RemoveRequest(int salesOrderId);
+
+
+
 
     }
 }

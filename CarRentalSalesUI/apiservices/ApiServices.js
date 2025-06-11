@@ -675,7 +675,7 @@ export class ApiServices {
         }
     }
 
-       static async getMyVechileRequested() {
+    static async getMyVechileRequested() {
         try {
             const response = await fetch(ApiKeys.GetMyVehcilRequested, { method: "GET", headers: { "Content-Type": "application/json" } });
             const myRequested = await response.json();
@@ -729,11 +729,11 @@ export class ApiServices {
 
     }
 
-       static async updateRequestStatus(orderId,status) {
-    
+    static async updateRequestStatus(orderId, status) {
+
         try {
 
-            const response = await fetch(ApiKeys.UpdateRequestStatus(orderId,status), {
+            const response = await fetch(ApiKeys.UpdateRequestStatus(orderId, status), {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -756,6 +756,26 @@ export class ApiServices {
 
     }
 
+
+    static async cancelRequest(saleOrderId) {
+        try {
+            const response = await fetch(ApiKeys.CancelRequest + saleOrderId, {
+                method: "Delete",
+            });
+
+            const data = await response.json();
+
+            return {
+                Data:data,
+                Ok:response.ok,
+                Status:response.status
+            };
+        }
+         catch (ex) {
+            console.error("Error delete cart:", ex);
+            throw ex;
+        }
+    }
 
 
 

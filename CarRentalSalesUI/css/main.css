@@ -169,6 +169,8 @@ select{
   padding: 5px;
   transition: top 0.3s;
   z-index: 1000;
+  border: 1px solid var(--hints-color-gray
+  );
 }
 .StickyNavBarGreen {
   position: fixed;
@@ -263,7 +265,7 @@ a:hover{
   height: 435px;
   background: white;
   box-shadow: 0px 5px 1px  rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 30px;
 
 }
 .LiContainerReq{
@@ -273,7 +275,7 @@ a:hover{
   height: 500px;
   background: #FFFFFF;
   box-shadow: 0px 5px 1px  rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 30px;
 }
 .LiContainerRequested{
 
@@ -282,7 +284,7 @@ a:hover{
   height: 520px;
   background: #FFFFFF;
   box-shadow: 0px 5px 1px  rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 .LiContainerHorizantal{
@@ -360,7 +362,7 @@ a:hover{
   width: 20px;
   height: 20px;
   margin-left: 5px;
-  border-radius: 5px;
+  border-radius: 50%;
   background: var(--main-color);
 }
 
@@ -465,8 +467,8 @@ a:hover{
 
 .Line{
   width: 100%;
-  height: 2px;
-  background: var(--hints-color);
+  height: 0.5px;
+  background: var(--hints-color-gray);
 }
 .BackgroundHint{
   border-radius: 20px;
@@ -494,7 +496,7 @@ a:hover{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;      
+  border-radius: 30px;      
   background: white;
   box-shadow: 0px 20px 50px  gray;
   animation: pop 0.2s ease forwards;
@@ -555,7 +557,7 @@ a:hover{
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-  height: 88%;
+  height: 70%;
   border-radius: 20px;
   flex-direction: column;
   background: white;
@@ -725,6 +727,7 @@ a:hover{
   align-items: center;
   background:var(--soft-white-color);
   border-radius: 2px;
+   border: 1px solid var(--hints-color-gray);
   display: flex;
   flex-direction: column;
 
@@ -819,7 +822,7 @@ a:hover{
   left: 50%;
   height: 60%;
   transform: translate(-50%, -50%);
-  border-radius: 20px;
+  border-radius: 30px;
   flex-direction: column;
   background: white;
   padding: 10px;
@@ -827,7 +830,7 @@ a:hover{
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
-   box-shadow: 0px 20px 50px  gray;
+  box-shadow: 0px 20px 50px  gray;
   z-index: 9999; 
   animation: AddContainerVInfo 0.3s ease forwards;
 }
@@ -875,22 +878,22 @@ input[type="radio"]:checked +.CheckedRadio+ span{
 
 .OverlayBack {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height:100%;
+  bottom: 5px;
+  left: 8px;
+  width: 95%;
   background: black;
-  opacity: 0.4;
+  opacity: 1;
   justify-content: center;
   align-items: center;
   transition: opacity 0.3s ease;
-  border-radius: 8px;
+  border-radius: 30px;
   z-index: 99;
 }
 .OverLayParagraph{
   color: wheat;
    font-size: 100%;
    font-family: 'Tajawal', sans-serif;
+   opacity: 1;
   
   
 }

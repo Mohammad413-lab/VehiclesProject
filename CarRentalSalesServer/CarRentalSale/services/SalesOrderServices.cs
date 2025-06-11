@@ -30,6 +30,11 @@ namespace CarRentalSale.services
             return SalesOrderRepository.GetMyRequestVehicleId(userId);
         }
 
+        public void RemoveRequest(int salesOrderId)
+        {
+            SalesOrderRepository.RemoveRequest(salesOrderId);
+        }
+
         public void UpdateRequested(short status, int saleOrderId)
         {
             SalesOrderRepository.UpdateRequested(status, saleOrderId);

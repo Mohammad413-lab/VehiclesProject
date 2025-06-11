@@ -106,7 +106,7 @@ const liInformation = `
 
         
         <div style="display:flex;" >
-          <button id="AddToCartButton" class="HomeButtonAddTo MainColor">add <i class="fas fa-warehouse"></i>
+          <button id="AddToCartButton" class="HomeButtonAddTo GreenColor"><i class="fas fa-warehouse"></i>
                     </button>
             <button id="CarRequestButton" class="HomeButtonOrder">request <i class="fa-solid fa-hand"></i>
                     </button>
@@ -151,14 +151,12 @@ export function loadingLocalSearchedNavBar(list) {
 
 function toggleClass(button, isTrue) {
     if (isTrue) {
-        button.classList.remove("MainColor");
-        button.classList.add("GreenColor");
-        button.innerHTML = `added <i class="fas fa-warehouse"></i>`;
+        button.classList.remove("GreenColor");
+        button.classList.add("AddColor");
 
     } else {
-        button.classList.remove("GreenColor");
-        button.classList.add("MainColor");
-        button.innerHTML = `add<i class="fas fa-warehouse"></i>`;
+        button.classList.remove("AddColor");
+        button.classList.add("GreenColor");
     }
 
 
@@ -183,6 +181,10 @@ export function carUlList(car, carU) {
 
     if (userRequest.includes(car.carID)) {
         toggleOverLay(overLay);
+        viewButton.classList.add("Hidden");
+        addToCartButton.classList.add("Hidden");
+        chatButton.classList.add("Hidden");
+        carRequestButton.classList.add("Hidden");
     }
 
 
@@ -202,7 +204,9 @@ export function carUlList(car, carU) {
             if (removeCarFromCart.status == true) {
                 userCartMap[car.carID] = false;
 
-            } else { toggleClass(addToCartButton, true); }
+            } else {
+                toggleClass(addToCartButton, true); 
+            }
         } else {
             toggleClass(addToCartButton, true);
             let response = await ApiServices.addCarToCart(car.carID);

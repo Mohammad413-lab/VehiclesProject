@@ -45,7 +45,8 @@ export let ApiKeys = {
     AddSaleOrder:`${url}SalesOrder/AddSaleOrder`,
     GetMyVehcileRequestId:url+"SalesOrder/GetMyRequestVehiclesId?userId="+UserKey.UserId,
     GetMyVehcilRequested:url + "SalesOrder/GetMyRequestedVehicles?userId="+UserKey.UserId,
-    UpdateRequestStatus:(orderId,status)=>`${url}SalesOrder/UpdateRequestSale?status=${status}&saleOrderId=${orderId}`
+    UpdateRequestStatus:(orderId,status)=>`${url}SalesOrder/UpdateRequestSale?status=${status}&saleOrderId=${orderId}`,
+    CancelRequest:url +"SalesOrder/removeSalesOrder?saleOrderId="
 
 }
 

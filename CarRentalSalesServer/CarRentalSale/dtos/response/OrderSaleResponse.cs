@@ -9,7 +9,8 @@ namespace CarRentalSale.dtos.response
 
         public required DateTime OrderDate { get; set; }
         public string? Note { get; set; }
-
+        
+        public decimal TotalAmount { get; set; }
         public byte Status { get; set; }
         public DateTime? UpdatedAt { get; set; }
 

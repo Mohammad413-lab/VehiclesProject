@@ -85,18 +85,24 @@ export async function loadingUserProfile() {
                 errorParagraph.style.display = "none";
                 let oldPassword = inputOldPassword.value;
                 let newPassword = inputNewPassword.value;
-                toggleButton(true);
 
-                let response = await ApiServices.changePassword(UserKey.UserId, oldPassword, newPassword);
-                if (response.Ok) {
-                    if (response.Data.status) {
+                if (inputOldPassword.value != '') {
 
-                    } else {
-                        errorParagraph.textContent = response.Data.message;
-                        errorParagraph.style.display = "flex";
+                    toggleButton(true);
+                    let response = await ApiServices.changePassword(UserKey.UserId, oldPassword, newPassword);
+                    if (response.Ok) {
+                        if (response.Data.status) {
+
+                        } else {
+                            errorParagraph.textContent = response.Data.message;
+                            errorParagraph.style.display = "flex";
+                        }
                     }
+                    toggleButton(false);
+                } else {
+                    errorParagraph.textContent = "please type your oldPassword";
+                    errorParagraph.style.display = "flex";
                 }
-                toggleButton(false);
             });
 
             eventListener(exitButton, () => hideUserProfile());

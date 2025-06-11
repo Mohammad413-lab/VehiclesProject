@@ -4,7 +4,7 @@
     width: 100%;
     height: 100%;
     background: white;
-    border-radius: 2px;
+    border-radius: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +19,7 @@
     height: 80vh;
     padding: 2px;
     background:white;
-    border-radius: 4px;
+    border-radius: 100px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
   
 }
@@ -52,6 +52,7 @@
 .DivLogo{
     background: var(--main-color);
     border-bottom-left-radius:300px;
+    border-top-left-radius:100px;
     width: 50%;
     height: 100%;
     display: flex;

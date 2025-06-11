@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.Common;
 using CarRentalSale.dtos;
 using CarRentalSale.dtos.response;
 using CarRentalSale.models;
@@ -94,9 +95,7 @@ ORDER BY s.OrderDate ASC, s.UpdatedAt Asc ";
             List<int> carsId = [];
             using SqlConnection connection = DatabaseAccess.GetConnection();
             connection.Open();
-            string query = @"SELECT CarId FROM SalesOrder WHERE UserId = @userId
-            UNION
-            SELECT CarId FROM RentalsOrder WHERE UserId = @userId;";
+            string query = @"SELECT CarId FROM SalesOrder WHERE UserId = @userId";
             using SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.Add("@userId", SqlDbType.Int).Value = userId;
             using SqlDataReader reader = command.ExecuteReader();
@@ -210,7 +209,9 @@ ORDER BY s.OrderDate ASC, s.UpdatedAt Asc ;";
                         Note = reader["Notes"] != DBNull.Value ? (string)reader["Notes"] : null,
                         Status = (byte)reader["OrderStatus"],
                         UpdatedAt = reader["UpdatedAt"] != DBNull.Value ? (DateTime)reader["UpdatedAt"] : null,
-                        Car = car
+                        Car = car,
+                        TotalAmount=(decimal)reader["TotalAmount"]
+                        
 
                     });
                 }
@@ -240,11 +241,21 @@ ORDER BY s.OrderDate ASC, s.UpdatedAt Asc ;";
             }
             catch (Exception ex)
             {
-                 throw new Exception($"SERVER ERROR --> {ex}");
+                throw new Exception($"SERVER ERROR --> {ex}");
             }
 
 
 
+        }
+
+        public static void RemoveRequest(int salesOrderId)
+        {
+            using SqlConnection connection = DatabaseAccess.GetConnection();
+            connection.Open();
+            string query = "delete from SalesOrder where SalesOrderId=@salesOrderId";
+            using SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.Add("@salesOrderId", SqlDbType.Int).Value = salesOrderId;
+            command.ExecuteNonQuery();
         }
     }
 }

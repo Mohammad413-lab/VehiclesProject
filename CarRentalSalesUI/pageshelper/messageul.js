@@ -104,8 +104,8 @@ function EmailLi(email, ul) {
     li.innerHTML = `
   
    
-          <div class="MessagesLeftSide" style="margin:0px padding:0px;">
-                                <div style="display: flex; ">
+          <div class="MessagesLeftSide" style="margin:px padding:0px;">
+                                <div style="display: flex; margin-bottom:10px;">
                                     <div class="checkbox-container" >
                                         <input type="checkbox" name="emails" value="${email.userId}"/>
                                         <span class="checkmark"></span>

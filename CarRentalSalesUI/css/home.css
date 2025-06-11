@@ -141,14 +141,17 @@
     white-space: nowrap;
     border-radius: 4px;
     font-weight: normal;
+    color: #66b266;
 }
 .MainColor{
     color:black;
 
 }
+.AddColor{
+    color:var(--secondary-color)
+}
 .HomeButtonAddTo:hover {
     color: black;
-   
     background: white;
     width: 60%;
 }

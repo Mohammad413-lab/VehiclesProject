@@ -7,7 +7,7 @@ import { createImage } from "../functions/CreateImageSlider.js";
 import { loadingNotFound } from "./nocarsfound.js";
 import { UserKey } from "../static/User.js";
 import { showVInfo } from "./vinfo.js";
-import { RequestStatus, changeStatusColor } from "../static/Status.js";
+import { RequestStatus, changeStatusColor,statusInfoForRequest } from "../static/Status.js";
 import { ActiveSideBarForRequest } from "./sidebar.js";
 import { localSearchNavBarReq } from "./navbar.js";
 import { loadSwiper } from "../functions/Swiper.js";
@@ -34,8 +34,10 @@ console.log(userCartMap);
 const liInformation = `
    <div class="LiContainerReq" >
 
-   
+   <div class="DivRow">
      <p id="ReqStatus"><i class="fa-solid fa-font-awesome"></i> Active</p>
+     <p id="ReqInfo" class="CarInfoDesign" style="margin-top:19px;"> Active</p>
+      </div>
 <div class="swiper-container"  id="SwiperContainer">
     <div class="swiper-wrapper" id="SwiperWrapper" >
        
@@ -78,7 +80,7 @@ const liInformation = `
         
         <div style="display:flex;" >
          
-            <button id="CarRequestButton" class="HomeButtonOrder">cancel request <i class="fa-solid fa-hand"></i>
+            <button id="CancelRequestButton" class="HomeButtonOrder">cancel request <i class="fa-solid fa-hand"></i>
                     </button>
                      <button id="ChatButton" class="HomeButtonChat">chat    <i class="fa-solid fa-comment"></i>
                     </button>
@@ -96,9 +98,10 @@ const liInformation = `
 
 const liInformationMyRequested = `
    <div class="LiContainerRequested" >
+   <div class="DivRow">
      <p id="ReqStatus"><i class="fa-solid fa-font-awesome"></i> Active</p>
-
-   
+      <p id="ReqInfo" class="CarInfoDesign" style="margin-top:19px;"> Active</p>
+      </div>
 <div class="swiper-container"  id="SwiperContainer">
     <div class="swiper-wrapper" id="SwiperWrapper" >
        
@@ -200,15 +203,25 @@ export function requestUlList(order, reqUl) {
     const viewButton = li.querySelector("#ViewButton");
     const chatButton = li.querySelector("#ChatButton");
     const swiperContainer = li.querySelector("#SwiperContainer");
+    const cancelRequestButton=li.querySelector("#CancelRequestButton");
     const swiperWrapper = li.querySelector("#SwiperWrapper");
     const modelName = li.querySelector("#ModelNameValue");
     const carYear = li.querySelector("#CarYearValue");
     const requestStatus = li.querySelector("#ReqStatus");
+    const reqInfo=li.querySelector("#ReqInfo");
     changeStatusColor(order.status, requestStatus);
-
+      
 
     eventListener(viewButton, () => showVInfo(order,false));
     eventListenerAsync(chatButton, async () => showChatLogo(order.car.user));
+    eventListenerAsync(cancelRequestButton,async function () {
+        let cancelResponse=await ApiServices.cancelRequest(order.saleOrderId);
+        if(cancelResponse.Ok){
+            showSucessfulLogo(cancelResponse.Data.message);
+            reqUl.removeChild(li);
+        }
+    })
+    statusInfoForRequest(order.status,reqInfo,true);
     modelName.textContent = order.car.model;
     carYear.textContent = order.car.year;
     price.textContent = order.car.carPrice ?? "No Price";
@@ -242,6 +255,7 @@ export function requestedVecUlList(order, reqUl) {
     const modelName = li.querySelector("#ModelNameValue");
     const carYear = li.querySelector("#CarYearValue");
     const requestStatus = li.querySelector("#ReqStatus");
+    const reqInfo=li.querySelector("#ReqInfo");
     changeStatusColor(order.status, requestStatus);
 
 
@@ -255,6 +269,8 @@ export function requestedVecUlList(order, reqUl) {
             }
        
     });
+
+    statusInfoForRequest(order.status,reqInfo,false);
     modelName.textContent = order.car.model;
     carYear.textContent = order.car.year;
     price.textContent = order.car.carPrice ?? "No Price";

@@ -50,12 +50,33 @@ namespace CarRentalSale.Controllers
             return Ok(MyRequestedVehicles);
 
         }
-        
 
 
-              
+
+
         [HttpPatch("UpdateRequestSale")]
-        public IActionResult UpdateRequestSale(short status,int saleOrderId)
+        public IActionResult UpdateRequestSale(short status, int saleOrderId)
+        {
+            try
+            {
+                if (saleOrderId == 0)
+                {
+                    return Ok(new { message = "You need to fill exist information", status = true });
+                }
+                _salesOrderService.UpdateRequested(status, saleOrderId);
+
+                return Ok(new { message = "Request status updated", status = true });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Server Error -->" + ex, status = false });
+            }
+
+
+        }
+        
+               [HttpDelete("removeSalesOrder")]
+        public IActionResult RemoveSalesOrder(int saleOrderId)
         {
             try
             {
@@ -63,9 +84,9 @@ namespace CarRentalSale.Controllers
                 { 
                      return Ok(new { message = "You need to fill exist information", status = true });
                 }
-                _salesOrderService.UpdateRequested(status, saleOrderId);
+                _salesOrderService.RemoveRequest(saleOrderId);
            
-                return Ok(new { message = "Request status updated", status = true });
+                return Ok(new { message = "Request  canceled", status = true });
             }
             catch (Exception ex)
             {
